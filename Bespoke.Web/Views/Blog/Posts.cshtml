@@ -15,7 +15,7 @@
         }
         @{ Html.RenderAction("Categories", "Blog");}
     </header>
-    <div class="large-8 medium-8 columns">
+    <div class="large-8 columns">
         <div class="panel">
             @if (Model.Posts.IsNullOrEmpty())
             {
@@ -33,7 +33,7 @@
             }
         </div>
     </div>
-    <div class="large-4 medium-4 columns">
+    <div class="large-4 columns">
         @{ Html.RenderAction("Sidebar", "Blog");}
     </div>
 </section>

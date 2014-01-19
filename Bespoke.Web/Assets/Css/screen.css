@@ -13,32 +13,6 @@
 /*
    Global Elements
 */
-/*
-@font-face {
-  font-family: 'Gibson';
-  src: url("../fonts/gibson/Regular/Gibson-Regular-webfont.eot");
-  src: url("../fonts/gibson/Regular/Gibson-Regular-webfont.eot?#iefix") format("embedded-opentype"), 
-       url("../fonts/gibson/Regular/Gibson-Regular-webfont.woff") format("woff"), 
-	   url("../fonts/gibson/Regular/Gibson-Regular-webfont.svg#GibsonRegular") format("svg"), 
-       url("../fonts/gibson/Regular/Gibson-Regular-webfont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; 
-}
-*/
-@font-face {
-  font-family: 'GibsonLight';
-  src: url("../fonts/gibson/Light/Gibson-Light-webfont.eot");
-  src: url("../fonts/gibson/Light/Gibson-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/gibson/Light/Gibson-Light-webfont.woff") format("woff"), url("../fonts/gibson/Light/Gibson-Light-webfont.svg#GibsonLightRegular") format("svg"), url("../fonts/gibson/Light/Gibson-Light-webfont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'GibsonSemiBold';
-  src: url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.eot");
-  src: url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.woff") format("woff"), url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.svg#GibsonSemiBold") format("svg"), url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
 @font-face {
   font-family: 'StyleFormal';
   src: url("../fonts/style-formal/StyleFormal/StyleFormal-webfont.eot");
@@ -76,7 +50,8 @@ a:hover {
   margin-top: 25px; }
 
 .section-header h2 {
-  font-family: "GibsonSemiBold", Arial, Tahoma;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
   font-size: 1.1875rem;
   color: #f38368;
   text-transform: uppercase;
@@ -88,7 +63,8 @@ a:hover {
   padding-bottom: 10px;
   background-color: #f38368;
   margin-bottom: 0;
-  font-family: "GibsonSemiBold", Arial, Tahoma;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
   font-size: 12px;
   text-transform: uppercase; }
   .button:hover, .button:focus {
@@ -123,43 +99,6 @@ a:hover {
     top: 6px; }
   .search-form div input {
     padding-right: 30px; }
-
-/*
-   Side bar Styles
-*/
-.sidebar {
-  background-color: #efefef;
-  font-family: "Open Sans", sans-serif; }
-  .sidebar h3 {
-    color: #f38368;
-    font-family: inherit;
-    font-size: 22px;
-    margin-top: 0;
-    line-height: 1; }
-  .sidebar > :first-child {
-    margin-top: 0; }
-  .sidebar section {
-    border-top: solid 1px white;
-    margin-top: 30px;
-    margin-bottom: 30px !important;
-    padding-top: 30px; }
-    .sidebar section:first-child {
-      border-top: none;
-      padding-top: 0; }
-    .sidebar section ul {
-      list-style-type: none;
-      margin: 0; }
-      .sidebar section ul li {
-        margin-top: 15px; }
-        .sidebar section ul li a {
-          color: #2b2b2b;
-          -webkit-transition: all 0.3s ease;
-          -moz-transition: all 0.3s ease;
-          transition: all 0.3s ease; }
-          .sidebar section ul li a:hover {
-            color: #84cdc1; }
-          .sidebar section ul li a:hover {
-            text-decoration: none; }
 
 /*
    Header Styles
@@ -217,8 +156,8 @@ a:hover {
     color: #333; }
 
 .nav-list li a {
-  font-family: "GibsonSemiBold", Arial, Tahoma;
-  font-weight: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
   color: #807f83;
   font-size: 0.9375rem;
   border-bottom: none;
@@ -500,6 +439,10 @@ a:hover {
     -moz-transition: opacity 0.5s ease-in-out;
     transition: opacity 0.5s ease-in-out; }
 
+.discussions-banner {
+  background: url(../images/discussions-banner.jpg) no-repeat black;
+  background-size: cover; }
+
 @media only screen and (min-width: 40.063em) {
   .banner h1 {
     font-size: 4.0625rem;
@@ -514,6 +457,34 @@ a:hover {
 @media only screen and (min-width: 715px) {
   .banner .banner-bg {
     opacity: 1.0; } }
+.article-share {
+  margin: 10px 0; }
+  .article-share .sharebuttons,
+  .article-share .sharecount {
+    display: inline-block;
+    vertical-align: top; }
+  .article-share .sharecount {
+    line-height: 40px;
+    font-size: 9pt; }
+  .article-share .sharebuttons a {
+    display: inline-block;
+    background: white url("../Images/sharrre-icons.png");
+    height: 40px;
+    width: 40px;
+    margin-right: 4px;
+    background-size: cover; }
+    .article-share .sharebuttons a.facebook {
+      background-position: -45px; }
+    .article-share .sharebuttons a.twitter {
+      background-position: -90px; }
+    .article-share .sharebuttons a.googleplus {
+      background-position: -136px; }
+    .article-share .sharebuttons a.mail {
+      background-position: -182px; }
+
+@media only screen and (min-width: 385px) {
+  .article-share .sharecount {
+    margin-left: 15px; } }
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
   position: relative;
@@ -540,10 +511,13 @@ a:hover {
     margin-right: 10px;
     margin-bottom: 0; }
 
-.post-author a {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit; }
+.post-author {
+  white-space: nowrap; }
+  .post-author a {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    white-space: nowrap; }
 
 .post-comment-count i {
   color: #84cdc1;
@@ -552,9 +526,9 @@ a:hover {
   font-size: 16px; }
 
 .post-title {
-  font-family: "GibsonLight", Arial, Tahoma;
-  font-size: 1.25rem;
-  font-weight: normal;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
   color: #f38368;
   margin-bottom: 0 !important;
   margin-top: 0;
@@ -564,7 +538,8 @@ a:hover {
     color: #f38368; }
 
 .post-category {
-  font-family: "GibsonLight", Arial, Tahoma;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
   font-size: .9em;
   line-height: 1em;
   margin: 0 0 3px 0;
@@ -576,7 +551,10 @@ a:hover {
     margin-top: 0; }
 
   .post-title {
-    font-size: 1.75rem; } }
+    font-size: 1.75rem; }
+
+  .post-detail .post-title {
+    font-size: 2.1rem; } }
 .post-thumbnail,
 .post-featured-image {
   margin-bottom: 25px; }
@@ -633,7 +611,8 @@ a:hover {
 
 .post-excerpt .read-more {
   display: block;
-  font-family: "GibsonSemiBold", Arial, Tahoma;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
   font-size: .8em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -655,12 +634,11 @@ a:hover {
 /* The author credit area after the post */
 .post-footer {
   position: relative;
-  padding: 2rem 0 0 0;
-  margin: 2rem 0 0 0;
-  border-top: solid 1px #d8d8d8; }
+  margin: 2rem 0 0 0; }
   .post-footer .post-tags {
     color: #807f83 !important;
-    font-size: 16px; }
+    font-size: 16px;
+    margin: 25px 0; }
     .post-footer .post-tags i {
       color: inherit;
       font-size: inherit; }
@@ -684,9 +662,9 @@ a:hover {
         text-decoration: none; }
 
 .post-not-found h2 {
-  font-family: "GibsonLight", Arial, Tahoma;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
   font-size: 1.25rem;
-  font-weight: normal;
   color: #f38368; }
 
 @media only screen and (min-width: 40.063em) {
@@ -696,7 +674,8 @@ a:hover {
   color: #807f83;
   display: inline-block;
   margin: 0 15px;
-  font-family: "GibsonLight", Arial, Tahoma;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
   line-height: 3.2; }
 
 .pagination {
@@ -756,7 +735,7 @@ a:hover {
   background-color: #f6f6f6;
   padding: 3px 20px;
   float: right;
-  display: inline-block; }
+  display: none; }
   .blog-categories ul {
     list-style-type: none;
     margin: 0;
@@ -787,21 +766,71 @@ a:hover {
         .blog-categories ul li a:after {
           content: "/";
           margin: 0 10px;
-          color: #807f83; }
+          color: #cccccc; }
       .blog-categories ul li:last-child a:after {
         content: "";
         margin: 0; }
       .blog-categories ul li:first-child {
         margin-right: 25px;
         text-transform: uppercase;
-        font-family: "GibsonLight", Arial, Tahoma;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 300;
         font-size: 14px; }
 
+@media only screen and (min-width: 960px) {
+  .blog-categories {
+    display: inline-block; } }
 /* 
    Tag Cloud Styles
 */
 .tag-cloud li a {
   line-height: 1.2; }
+
+/*
+	Blog Side bar
+*/
+.sidebar .latest-posts ul li span {
+  display: block;
+  color: #807f83;
+  font-style: italic;
+  font-size: .9em; }
+
+/*
+   Side bar Styles
+*/
+.sidebar {
+  background-color: #efefef;
+  font-family: "Open Sans", sans-serif; }
+  .sidebar h3 {
+    color: #f38368;
+    font-family: inherit;
+    font-size: 22px;
+    margin-top: 0;
+    line-height: 1.5; }
+  .sidebar > :first-child {
+    margin-top: 0; }
+  .sidebar section {
+    border-top: solid 1px white;
+    margin-top: 30px;
+    margin-bottom: 30px !important;
+    padding-top: 20px; }
+    .sidebar section:first-child {
+      border-top: none;
+      padding-top: 0; }
+    .sidebar section ul {
+      list-style-type: none;
+      margin: 0; }
+      .sidebar section ul li {
+        margin-top: 15px; }
+        .sidebar section ul li a {
+          color: #2b2b2b;
+          -webkit-transition: all 0.3s ease;
+          -moz-transition: all 0.3s ease;
+          transition: all 0.3s ease; }
+          .sidebar section ul li a:hover {
+            color: #84cdc1; }
+          .sidebar section ul li a:hover {
+            text-decoration: none; }
 
 .slides {
   background: white;

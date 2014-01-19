@@ -1,0 +1,46 @@
+
+.article-share {
+	margin: 10px 0;
+
+	.sharebuttons, 
+	.sharecount {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.sharecount {		
+		line-height: 40px;
+		font-size: 9pt;
+	}	
+
+	.sharebuttons a {
+		display: inline-block;
+		background: #fff url('../Images/sharrre-icons.png');
+		height: 40px;
+		width: 40px;
+		margin-right: 4px;
+		background-size: cover;
+
+		&.facebook {
+			background-position: -45px;
+		}
+
+		&.twitter {
+			background-position: -90px;
+		}
+
+		&.googleplus {
+			background-position: -136px;
+		}
+
+		&.mail {
+			background-position: -182px;
+		}
+	}	
+}
+
+@media only screen and (min-width: 385px) {
+	.article-share .sharecount {
+		margin-left: 15px;
+	}
+}

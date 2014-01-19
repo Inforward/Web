@@ -2,9 +2,7 @@
 (function ($) {
 
     $(function () {
-        var $sliders = $(".iosSlider"),
-            $header = $(".page-header"),
-            $window = $(window);
+        var $sliders = $(".iosSlider");
 
         $(document).foundation();
 

@@ -23,7 +23,9 @@ namespace Bespoke.Web
                 "~/Assets/vendor/foundation/foundation.js",
                 "~/Assets/vendor/foundation/foundation.offcanvas.js",
                 "~/Assets/vendor/jquery.scroll-start-stop.js",
-                "~/Assets/vendor/jquery-ui-1.10.4.custom.js"));
+                "~/Assets/vendor/jquery-ui-1.10.4.custom.js",
+                "~/Assets/vendor/jquery.sharrre.js",
+                "~/Assets/vendor/bamboo.0.1.js"));
 
             // Miscellaneous (single-page) js bundles
             bundles.Add(new ScriptBundle("~/bundles/vendor/modernizr").Include("~/Assets/vendor/custom.modernizr.min.js"));
@@ -35,6 +37,7 @@ namespace Bespoke.Web
             // All css
             var bundle = new StyleBundle("~/bundles/css");
 
+            bundle.Include("~/Assets/css/bamboo.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/normalize.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/foundation.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/font-awesome.css", new CssRewriteUrlTransform());

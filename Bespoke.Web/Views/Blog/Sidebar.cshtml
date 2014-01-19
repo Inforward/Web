@@ -9,12 +9,15 @@
             </div>
         }
     </section>
-    <section>
-        <h3>Recent Posts</h3>
+    <section class="latest-posts">
+        <h3>Latest Posts</h3>
         <ul>
             @foreach (var post in Model.Posts)
             {
-                <li><a href="@post.Url">@Html.Raw(@post.Post.Title)</a></li>
+                <li>
+                    <a href="@post.Url">@Html.Raw(@post.Post.Title)</a>
+                    <span>@post.Post.CreateDate.ToString("MMMM dd, yyyy")</span>
+                </li>
             }
         </ul>
     </section>

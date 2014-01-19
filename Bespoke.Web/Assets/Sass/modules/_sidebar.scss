@@ -1,0 +1,50 @@
+/*
+   Side bar Styles
+*/ 
+
+.sidebar {
+	background-color: $gray60;
+	font-family: $default-font;
+
+	h3 {
+		color: $mommy-orange;
+		font-family: inherit;
+		font-size: 22px;
+		margin-top: 0;
+		line-height: 1.5;
+	}
+
+	&>:first-child {
+		margin-top: 0;
+	}
+
+	section {
+		border-top: solid 1px $white;
+		margin-top: 30px;
+		margin-bottom: 30px !important;
+		padding-top: 20px;
+
+		&:first-child {
+			border-top: none;
+			padding-top: 0;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+
+			li {
+				margin-top: 15px;
+
+				a {
+					@include hover-trans($black10, $teal10);
+					@include remove-underline();					
+				}
+			}
+		}
+
+		&.latest-posts {
+			
+		}
+	}    
+}

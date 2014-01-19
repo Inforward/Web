@@ -84,8 +84,8 @@ $header-height-large: 175px;
 
 .nav-list {
 	li a {
-		font-family: $gibson-font-semi-bold;
-		font-weight: normal;
+		font-family: $default-font;
+		font-weight: 600;
 		color: $gray10;
 		font-size: rem-calc(15);
 		border-bottom: none;

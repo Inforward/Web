@@ -40,7 +40,8 @@ a:hover {
 
 .section-header {
 	h2 {
-		font-family: $gibson-font-semi-bold;
+		font-family: $default-font;
+		font-weight: 600;
 		font-size: rem-calc(19);
 		color: $mommy-orange;
 		text-transform: uppercase;
@@ -54,7 +55,8 @@ a:hover {
 	padding-bottom: 10px;
 	background-color: $mommy-orange;
 	margin-bottom: 0;
-	font-family: $gibson-font-semi-bold;
+	font-family: $default-font;
+	font-weight: 600;
 	font-size: 12px;
 	text-transform: uppercase;
 
@@ -97,53 +99,4 @@ a:hover {
 			padding-right: 30px;
 		}
 	}
-}
-
-
-
-/*
-   Side bar Styles
-*/ 
-
-.sidebar {
-	background-color: $gray60;
-	font-family: $default-font;
-
-	h3 {
-		color: $mommy-orange;
-		font-family: inherit;
-		font-size: 22px;
-		margin-top: 0;
-		line-height: 1;
-	}
-
-	&>:first-child {
-		margin-top: 0;
-	}
-
-	section {
-		border-top: solid 1px $white;
-		margin-top: 30px;
-		margin-bottom: 30px !important;
-		padding-top: 30px;
-
-		&:first-child {
-			border-top: none;
-			padding-top: 0;
-		}
-
-		ul {
-			list-style-type: none;
-			margin: 0;
-
-			li {
-				margin-top: 15px;
-
-				a {
-					@include hover-trans($black10, $teal10);
-					@include remove-underline();					
-				}
-			}
-		}
-	}    
 }

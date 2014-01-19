@@ -190,6 +190,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="Assets\Css\bamboo.css" />
     <Content Include="Assets\Css\font-awesome.css" />
     <Content Include="Assets\Css\foundation.css" />
     <Content Include="Assets\Css\normalize.css" />
@@ -204,16 +205,21 @@
     <Content Include="Assets\Images\blog-cover-photo.png" />
     <Content Include="Assets\Images\blog-pic.jpg" />
     <Content Include="Assets\Images\discussion-pic.png" />
+    <Content Include="Assets\Images\discussions-banner.jpg" />
     <Content Include="Assets\Images\header-background.png" />
     <Content Include="Assets\Images\logo-432x153.png" />
+    <Content Include="Assets\Images\promo-banner-blog.jpg" />
     <Content Include="Assets\Images\promo-banner-discuss.jpg" />
+    <Content Include="Assets\Images\sharrre-icons.png" />
     <Content Include="Assets\Images\slider-blog.jpg" />
     <Content Include="Assets\Images\slider-connect.jpg" />
     <Content Include="Assets\Images\slider-fade-left.png" />
     <Content Include="Assets\Images\slider-fade-right.png" />
     <Content Include="Assets\Images\slider-forum.jpg" />
     <Content Include="Assets\Scripts\app.js" />
+    <Content Include="Assets\Scripts\article-share.js" />
     <Content Include="Assets\Scripts\header.js" />
+    <Content Include="Assets\Vendor\bamboo.0.1.js" />
     <Content Include="Assets\Vendor\custom.modernizr.min.js" />
     <Content Include="Assets\Vendor\Foundation\foundation.abide.js" />
     <Content Include="Assets\Vendor\Foundation\foundation.accordion.js" />
@@ -233,6 +239,7 @@
     <Content Include="Assets\Vendor\jquery-ui-1.10.4.custom.js" />
     <Content Include="Assets\Vendor\jquery.iosslider.min.js" />
     <Content Include="Assets\Vendor\jquery.scroll-start-stop.js" />
+    <Content Include="Assets\Vendor\jquery.sharrre.js" />
     <Content Include="Assets\Vendor\respond.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -458,6 +465,8 @@
     <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.eot" />
     <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.ttf" />
     <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.woff" />
+    <Content Include="Assets\Sass\modules\_article-share.scss" />
+    <Content Include="Assets\Sass\modules\_sidebar.scss" />
     <None Include="Properties\PublishProfiles\bespokemommy.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\Discussions\Index.cshtml" />
