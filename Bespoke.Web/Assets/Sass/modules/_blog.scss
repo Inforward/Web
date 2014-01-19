@@ -1,0 +1,344 @@
+/* Every post, on every page, gets this style on its <article> tag */
+.post {
+    position: relative;
+    padding-bottom: 30px;
+    word-break: normal;
+    hyphens: auto;
+}
+
+.post-meta {
+	margin: 5px 0;
+    font-size: 16px;
+    font-weight: normal;
+    color: $gray10;
+	@include clearfix();
+
+	&>p {
+		font-family: inherit; 
+		font-size: inherit; 
+		color: inherit;
+		float: left;
+		margin-right: 10px;
+		margin-bottom: 0;
+	}
+}
+
+.post-author {
+	a { 
+		font-family: inherit; 
+		font-size: inherit; 
+		color: inherit;
+	}
+}
+
+.post-date {
+
+}
+
+.post-comment-count {
+    i {
+        color: $teal10;
+        display: inline-block;
+        margin: 0 5px;
+        font-size: 16px;
+    }
+}
+
+.post-title {
+    font-family: $gibson-font-light;
+    font-size: 1.25rem;
+    font-weight: normal;
+    color: $mommy-orange;
+    margin-bottom: 0 !important;
+	margin-top: 0;
+    line-height: 1em;
+
+    a {
+        font: inherit;
+        color: $mommy-orange;
+    }
+}
+
+.post-category {
+	font-family: $gibson-font-light;
+    font-size: .9em;
+	line-height: 1em;
+	margin: 0 0 3px 0;
+    color: $gray10;
+	text-transform: uppercase;
+}
+
+@media #{$medium-up} {
+	.post-header {
+		margin-top: 0;
+	}
+	.post-title {
+		font-size: 1.75rem;
+	}
+}
+
+.post-thumbnail,
+.post-featured-image {
+	margin-bottom: 25px;
+}
+
+.user-meta {
+    position: relative;
+    padding: 0.3rem 40px 0 100px;
+    min-height: 77px;
+}
+
+.user-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.user-name {
+    display: block;
+    font-weight: bold;
+}
+
+.user-bio {
+    display: block;
+    max-width: 440px;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+}
+
+.publish-meta {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4.3rem 0 4rem 0;
+    text-align: right;
+}
+
+.publish-heading {
+    display: block;
+    font-weight: bold;
+}
+
+.publish-date {
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.5em;
+}
+
+/* 
+   Single Post - When you click on an individual post
+*/
+.post-excerpt p,
+.post-content p {
+	font-size: 18px;
+    line-height: 1.6;
+    font-family: $default-font;
+	color: $black10;
+	margin: 0 0 20px 0;
+
+	&:first-child {
+		margin-top: 10px;
+	}
+}
+
+.post-excerpt {
+
+	.read-more {
+		display: block;
+		font-family: $gibson-font-semi-bold;
+		font-size: .8em;
+		text-transform: uppercase;
+		white-space: nowrap;
+		margin-top: 5px;
+		@include hover-trans($teal10, $gray10);
+		@include remove-underline();
+	}
+}
+
+.post-content {
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* The author credit area after the post */
+.post-footer {
+    position: relative;
+    padding: 2rem 0 0 0;
+	margin: 2rem 0 0 0;
+	border-top: solid 1px $gray30;
+
+	.post-tags {
+		color: $gray10 !important;
+		font-size: 16px;
+
+		i {
+			color: inherit;
+			font-size: inherit;
+		}
+
+		a { 
+			background: #f2f2f2; 
+			display: inline-block; 
+			line-height: 16px; 
+			white-space: nowrap; 
+			font-size: 14px; 
+			color: inherit; 
+			padding: 3px 7px; 
+			margin: 0 3px 0 3px;
+			-webkit-border-radius: 2px; 
+			border-radius: 2px; 
+			@include transition (all 300ms ease-in-out);
+
+			&:hover {
+				background: $teal10; 
+				color: #fff; 
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+.post-not-found {
+	h2 {
+		font-family: $gibson-font-light;
+		font-size: 1.25rem;
+		font-weight: normal;
+		color: $mommy-orange;
+	}
+}
+
+@media #{$medium-up} {
+	.post-not-found h2 {
+		font-size: 1.75rem;
+	}
+}
+
+.post-filter {
+	color: $gray10;
+	display: inline-block;
+	margin: 0 15px;
+	font-family: $gibson-font-light;
+	line-height: 3.2;
+}
+
+.pagination {
+    position: relative;
+    width: 80%;
+    max-width: 700px;
+    margin: 10px auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    color: #9EABB3;
+    text-align: center;
+}
+
+.pagination a {
+    color: #9EABB3;
+}
+
+/* Push the previous/next links out to the left/right */
+.older-posts,
+.newer-posts {
+    position: absolute;
+    display: inline-block;
+    padding: 0 15px;
+    border: #EBF2F6 2px solid;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: border ease 0.3s;
+}
+
+.older-posts {
+    right: 0;
+}
+
+.page-number {
+    display: inline-block;
+    padding: 2px 0;
+}
+
+.newer-posts {
+    left: 0;
+}
+
+.older-posts:hover,
+.newer-posts:hover {
+    border-color: #9EABB3;
+}
+
+.blog-header {
+	@include clearfix();
+
+	h2 {
+		float: left;
+		margin-bottom: 0;
+		line-height: 2.4;
+
+		a {
+			font: inherit;
+			color: inherit;
+		}
+	}
+}
+
+.blog-categories {
+	background-color: $gray70;
+	padding: 3px 20px;
+	float: right;
+	display: inline-block;
+		
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		@include clearfix();
+
+		li {
+			float: left;
+			display: block;
+			line-height: 32px;
+			color: $gray10;
+			font-size: 16px;
+
+			a {
+				font-size: inherit;
+				line-height: inherit;
+				display: block;	
+				@include hover-trans(inherit, $mommy-orange);
+				@include remove-underline();		
+
+				&:after {
+					content: "/";
+					margin: 0 10px;
+					color: $gray10;
+				}
+			}
+
+			&:last-child a:after {
+				content: "";
+				margin: 0;
+			}
+
+			&:first-child {
+				margin-right: 25px;
+				text-transform: uppercase;
+				font-family: $gibson-font-light;
+				font-size: 14px;
+			}
+		}
+	}
+}
+
+/* 
+   Tag Cloud Styles
+*/ 
+
+.tag-cloud {
+	li a {
+		line-height: 1.2;
+	}
+}

@@ -1,0 +1,500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8CD6B77D-07C5-4431-A4C0-3724F7EF88DC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bespoke.Web</RootNamespace>
+    <AssemblyName>Bespoke.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.0.0.7\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.3.0.0.6\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\DiscussionsController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\HtmlExtensions.cs" />
+    <Compile Include="Models\Blog\ArchiveViewModel.cs" />
+    <Compile Include="Models\Blog\CategoryViewModel.cs" />
+    <Compile Include="Models\Blog\PostViewModel.cs" />
+    <Compile Include="Models\Blog\BlogViewModel.cs" />
+    <Compile Include="Models\Blog\TagViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="apple-touch-icon-precomposed.png" />
+    <Content Include="Assets\Css\font-awesome.css" />
+    <Content Include="Assets\Css\foundation.css" />
+    <Content Include="Assets\Css\normalize.css" />
+    <Content Include="Assets\Css\screen.css" />
+    <Content Include="Assets\Fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Assets\Fonts\gibson\Light\Gibson-Light-webfont.svg" />
+    <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.svg" />
+    <Content Include="Assets\Fonts\gibson\Regular\Gibson-Regular-webfont.svg" />
+    <Content Include="Assets\Fonts\gibson\SemiBold\Gibson-SemiBold-webfont.svg" />
+    <Content Include="Assets\Images\banner-bg.png" />
+    <Content Include="Assets\Images\bd-logo-343x117.png" />
+    <Content Include="Assets\Images\blog-cover-photo.png" />
+    <Content Include="Assets\Images\blog-pic.jpg" />
+    <Content Include="Assets\Images\discussion-pic.png" />
+    <Content Include="Assets\Images\header-background.png" />
+    <Content Include="Assets\Images\logo-432x153.png" />
+    <Content Include="Assets\Images\promo-banner-discuss.jpg" />
+    <Content Include="Assets\Images\slider-blog.jpg" />
+    <Content Include="Assets\Images\slider-connect.jpg" />
+    <Content Include="Assets\Images\slider-fade-left.png" />
+    <Content Include="Assets\Images\slider-fade-right.png" />
+    <Content Include="Assets\Images\slider-forum.jpg" />
+    <Content Include="Assets\Scripts\app.js" />
+    <Content Include="Assets\Scripts\header.js" />
+    <Content Include="Assets\Vendor\custom.modernizr.min.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.abide.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.accordion.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.alert.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.clearing.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.dropdown.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.interchange.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.joyride.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.magellan.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.offcanvas.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.orbit.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.reveal.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.tab.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.tooltip.js" />
+    <Content Include="Assets\Vendor\Foundation\foundation.topbar.js" />
+    <Content Include="Assets\Vendor\jquery-ui-1.10.4.custom.js" />
+    <Content Include="Assets\Vendor\jquery.iosslider.min.js" />
+    <Content Include="Assets\Vendor\jquery.scroll-start-stop.js" />
+    <Content Include="Assets\Vendor\respond.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="robots.txt" />
+    <Content Include="sitemap.xml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bespoke.Infrastructure\Bespoke.Infrastructure.csproj">
+      <Project>{58e523bb-8791-4fd0-8779-c9945bc8f170}</Project>
+      <Name>Bespoke.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bespoke.Model\Bespoke.Models.csproj">
+      <Project>{0b795b9c-23c0-41d5-8240-1a967938b408}</Project>
+      <Name>Bespoke.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bespoke.Services\Bespoke.Services.csproj">
+      <Project>{10e90eef-3de9-4ac9-a622-454896ce3a9a}</Project>
+      <Name>Bespoke.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\gibson\Light\Gibson-Light-webfont.eot" />
+    <Content Include="Assets\Fonts\gibson\Light\Gibson-Light-webfont.ttf" />
+    <Content Include="Assets\Fonts\gibson\Light\Gibson-Light-webfont.woff" />
+    <Content Include="Assets\Fonts\gibson\Regular\Gibson-Regular-webfont.eot" />
+    <Content Include="Assets\Fonts\gibson\Regular\Gibson-Regular-webfont.ttf" />
+    <Content Include="Assets\Fonts\gibson\Regular\Gibson-Regular-webfont.woff" />
+    <Content Include="Assets\Fonts\gibson\SemiBold\Gibson-SemiBold-webfont.eot" />
+    <Content Include="Assets\Fonts\gibson\SemiBold\Gibson-SemiBold-webfont.ttf" />
+    <Content Include="Assets\Fonts\gibson\SemiBold\Gibson-SemiBold-webfont.woff" />
+    <Content Include="Assets\Fonts\style-formal\StyleEndings\StyleEndings-webfont.eot" />
+    <Content Include="Assets\Fonts\style-formal\StyleEndings\StyleEndings-webfont.ttf" />
+    <Content Include="Assets\Fonts\style-formal\StyleEndings\StyleEndings-webfont.woff" />
+    <Content Include="Assets\Fonts\style-formal\StyleFormal\StyleFormal-webfont.eot" />
+    <Content Include="Assets\Fonts\style-formal\StyleFormal\StyleFormal-webfont.ttf" />
+    <Content Include="Assets\Fonts\style-formal\StyleFormal\StyleFormal-webfont.woff" />
+    <Content Include="Assets\Fonts\style-formal\StyleSwashes\StyleSwashes-webfont.eot" />
+    <Content Include="Assets\Fonts\style-formal\StyleSwashes\StyleSwashes-webfont.ttf" />
+    <Content Include="Assets\Fonts\style-formal\StyleSwashes\StyleSwashes-webfont.woff" />
+    <Content Include="Assets\Sass\bourbon\addons\_button.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_clearfix.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_font-family.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_hide-text.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_html5-input-types.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_position.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_prefixer.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_retina-image.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_size.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_timing-functions.scss" />
+    <Content Include="Assets\Sass\bourbon\addons\_triangle.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_animation.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_appearance.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_backface-visibility.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_background-image.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_background.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_border-image.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_border-radius.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_box-sizing.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_columns.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_flex-box.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_font-face.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_hidpi-media-query.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_image-rendering.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_inline-block.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_keyframes.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_linear-gradient.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_perspective.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_placeholder.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_radial-gradient.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_transform.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_transition.scss" />
+    <Content Include="Assets\Sass\bourbon\css3\_user-select.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_compact.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_flex-grid.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_grid-width.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_linear-gradient.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_modular-scale.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_px-to-em.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_radial-gradient.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_tint-shade.scss" />
+    <Content Include="Assets\Sass\bourbon\functions\_transition-property-name.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_deprecated-webkit-gradient.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_gradient-positions-parser.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_linear-positions-parser.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_radial-arg-parser.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_radial-positions-parser.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_render-gradients.scss" />
+    <Content Include="Assets\Sass\bourbon\helpers\_shape-size-stripper.scss" />
+    <Content Include="Assets\Sass\bourbon\_bourbon-deprecated-upcoming.scss" />
+    <Content Include="Assets\Sass\bourbon\_bourbon.scss" />
+    <Content Include="Assets\Sass\foundation.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <OutputFolder>..\Css</OutputFolder>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Assets\Sass\foundation\components\_accordion.scss" />
+    <Content Include="Assets\Sass\foundation\components\_alert-boxes.scss" />
+    <Content Include="Assets\Sass\foundation\components\_block-grid.scss" />
+    <Content Include="Assets\Sass\foundation\components\_breadcrumbs.scss" />
+    <Content Include="Assets\Sass\foundation\components\_button-groups.scss" />
+    <Content Include="Assets\Sass\foundation\components\_buttons.scss" />
+    <Content Include="Assets\Sass\foundation\components\_clearing.scss" />
+    <Content Include="Assets\Sass\foundation\components\_dropdown-buttons.scss" />
+    <Content Include="Assets\Sass\foundation\components\_dropdown.scss" />
+    <Content Include="Assets\Sass\foundation\components\_flex-video.scss" />
+    <Content Include="Assets\Sass\foundation\components\_forms.scss" />
+    <Content Include="Assets\Sass\foundation\components\_global.scss" />
+    <Content Include="Assets\Sass\foundation\components\_grid.scss" />
+    <Content Include="Assets\Sass\foundation\components\_inline-lists.scss" />
+    <Content Include="Assets\Sass\foundation\components\_joyride.scss" />
+    <Content Include="Assets\Sass\foundation\components\_keystrokes.scss" />
+    <Content Include="Assets\Sass\foundation\components\_labels.scss" />
+    <Content Include="Assets\Sass\foundation\components\_magellan.scss" />
+    <Content Include="Assets\Sass\foundation\components\_offcanvas.scss" />
+    <Content Include="Assets\Sass\foundation\components\_orbit.scss" />
+    <Content Include="Assets\Sass\foundation\components\_pagination.scss" />
+    <Content Include="Assets\Sass\foundation\components\_panels.scss" />
+    <Content Include="Assets\Sass\foundation\components\_pricing-tables.scss" />
+    <Content Include="Assets\Sass\foundation\components\_progress-bars.scss" />
+    <Content Include="Assets\Sass\foundation\components\_reveal.scss" />
+    <Content Include="Assets\Sass\foundation\components\_side-nav.scss" />
+    <Content Include="Assets\Sass\foundation\components\_split-buttons.scss" />
+    <Content Include="Assets\Sass\foundation\components\_sub-nav.scss" />
+    <Content Include="Assets\Sass\foundation\components\_switch.scss" />
+    <Content Include="Assets\Sass\foundation\components\_tables.scss" />
+    <Content Include="Assets\Sass\foundation\components\_tabs.scss" />
+    <Content Include="Assets\Sass\foundation\components\_thumbs.scss" />
+    <Content Include="Assets\Sass\foundation\components\_tooltips.scss" />
+    <Content Include="Assets\Sass\foundation\components\_top-bar.scss" />
+    <Content Include="Assets\Sass\foundation\components\_type.scss" />
+    <Content Include="Assets\Sass\foundation\components\_visibility.scss" />
+    <Content Include="Assets\Sass\foundation\_functions.scss" />
+    <Content Include="Assets\Sass\foundation\_settings.scss" />
+    <Content Include="Assets\Sass\modules\_banner.scss" />
+    <Content Include="Assets\Sass\modules\_fonts.scss" />
+    <Content Include="Assets\Sass\modules\_footer.scss" />
+    <Content Include="Assets\Sass\modules\_global.scss" />
+    <Content Include="Assets\Sass\modules\_header.scss" />
+    <Content Include="Assets\Sass\modules\_mixins.scss" />
+    <Content Include="Assets\Sass\modules\_blog.scss" />
+    <Content Include="Assets\Sass\modules\_slides.scss" />
+    <Content Include="Assets\Sass\normalize.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <OutputFolder>..\Css</OutputFolder>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Assets\Sass\screen.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <OutputFolder>..\Css</OutputFolder>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Blog\Detail.cshtml" />
+    <Content Include="Views\Shared\_BlogExcerpt.cshtml" />
+    <Content Include="Views\Blog\Sidebar.cshtml" />
+    <Content Include="Views\Layouts\_Default.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Social.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_BlogHeader.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blog\Categories.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blog\Posts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Assets\Fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Assets\Fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Assets\Fonts\font-awesome\FontAwesome.otf" />
+    <Content Include="Assets\Sass\font-awesome.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <OutputFolder>..\Css</OutputFolder>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Assets\Sass\font-awesome\_bordered-pulled.scss" />
+    <Content Include="Assets\Sass\font-awesome\_core.scss" />
+    <Content Include="Assets\Sass\font-awesome\_fixed-width.scss" />
+    <Content Include="Assets\Sass\font-awesome\_icons.scss" />
+    <Content Include="Assets\Sass\font-awesome\_larger.scss" />
+    <Content Include="Assets\Sass\font-awesome\_list.scss" />
+    <Content Include="Assets\Sass\font-awesome\_mixins.scss" />
+    <Content Include="Assets\Sass\font-awesome\_path.scss" />
+    <Content Include="Assets\Sass\font-awesome\_rotated-flipped.scss" />
+    <Content Include="Assets\Sass\font-awesome\_spinning.scss" />
+    <Content Include="Assets\Sass\font-awesome\_stacked.scss" />
+    <Content Include="Assets\Sass\font-awesome\_variables.scss" />
+    <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.eot" />
+    <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.ttf" />
+    <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.woff" />
+    <None Include="Properties\PublishProfiles\bespokemommy.pubxml" />
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
+    <Content Include="Views\Discussions\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55098</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:55098/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

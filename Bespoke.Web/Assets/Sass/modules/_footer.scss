@@ -1,0 +1,84 @@
+
+/*
+   Footer Styles
+*/        
+.footer {
+	background: $black10;
+	padding-top: rem-calc(45);		
+	margin-top: rem-calc(100);
+	color: $gray10;
+	font-size: rem-calc(15);
+}
+
+.footer-nav {
+	color: inherit;
+	@include clearfix();
+
+	&>ul {
+		list-style: none;
+		margin: 0 rem-calc(60) rem-calc(20) 0;
+		float: left;
+	}
+
+	ul li a {
+		color: inherit;
+	}
+}
+
+.footer-social {
+	position: relative;
+
+	.follow-us {
+		font-family: $style-formal;
+		color: $mommy-orange;
+		font-size: rem-calc(27);
+		margin-right: rem-calc(15);
+		text-transform: lowercase;
+		position: relative;
+		top: -6px;
+	}
+}
+
+.footer-copyright {
+	line-height: rem-calc(55);	
+	margin-top: rem-calc(40);
+	border-top: solid 1px $gray50;
+}
+
+.footer-logo {
+	height: 58px;
+	width: 165px;
+	display: none;
+	float: right;
+
+	img {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.footer-social,
+.footer-logo  {
+	margin-top: 25px;
+}
+
+@media #{$medium-up} {
+	.footer-nav {
+		float: left;
+	}
+
+	.footer-social {
+		float: right;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.footer-logo {
+		display: block;
+	}
+
+	.footer-social {
+		float: left;
+		margin-left: 50px;
+	}
+}

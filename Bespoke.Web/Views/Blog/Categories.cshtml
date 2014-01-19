@@ -1,0 +1,11 @@
+﻿@model List<CategoryViewModel>
+
+<div class="blog-categories">
+    <ul>
+        <li>Categories:</li>
+        @foreach (var category in Model)
+        {
+            <li><a href="@category.Url" rel="category tag">@category.Title</a></li>
+        }
+    </ul>
+</div>

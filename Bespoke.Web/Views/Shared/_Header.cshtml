@@ -1,0 +1,45 @@
+﻿<header id="header">
+    <div id="top-nav-wrap">
+        <div id="top-nav" class="row">
+            <ul class="button-group nav-list">
+                <li><a href="#">REGISTER or SIGN IN</a></li>
+                <li>
+                    <form id="header-search-form" method="get" action="/">
+                        <input type="text" name="query" placeholder="search" />
+                    </form>
+                </li>
+                <li>
+                    @Html.Partial("_Social")
+                </li>
+                <li>
+                    <a class="daddy-logo" href="#" target="_blank" title="Bespoke Daddy">
+                        <img src="@Url.Content("~/Assets/Images/bd-logo-343x117.png")" alt="Bespoke Daddy" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="nav-wrap" class="row">
+        <div class="columns">
+            <a class="left-off-canvas-toggle menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+            <div class="logo-wrap">
+                <a href="@Url.Action("Index", "Home")" title="Bespoke Mommy" class="logo">
+                    <img src="@Url.Content("~/Assets/Images/logo-432x153.png")" alt="Bespoke Mommy" />
+                </a>
+            </div>
+            <nav>
+                <ul class="button-group">
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Boards</a></li>
+                    <li><a href="#">Registry</a></li>
+                    <li><a href="@Url.Action("Index", "Blog")">Blog</a></li>
+                    <li><a href="@Url.Action("Index", "Discussions")">Discussions</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

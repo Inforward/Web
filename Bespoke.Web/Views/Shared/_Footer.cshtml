@@ -1,0 +1,34 @@
+﻿<footer class="footer">
+    <div class="row">
+        <div class="columns clearfix">
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">In the News</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Site Map</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Boards</a></li>
+                    <li><a href="#">Registry</a></li>
+                    <li><a href="@Url.Action("Index", "Blog")">Blog</a></li>
+                    <li><a href="@Url.Action("Index", "Discussions")">Discussions</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <span class="follow-us">Follow us:</span>
+                @Html.Partial("_Social")
+            </div>
+            <div class="footer-logo">
+                <img src="@Url.Content("~/Assets/Images/logo-432x153.png")" alt="Bespoke Mommy" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns">
+            <div class="footer-copyright">&copy; @DateTime.Today.Year Bespoke Mommy</div>
+        </div>
+    </div>
+</footer>

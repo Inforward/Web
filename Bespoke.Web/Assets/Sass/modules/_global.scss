@@ -1,0 +1,149 @@
+
+/* 
+   Utility Classes
+*/
+
+
+/* 
+   Global Styles
+*/
+body {
+	color: #222222;
+	font-family: $default-font;
+	font-weight: normal;
+	font-style: normal;
+	line-height: 1;
+	cursor: default;
+}
+
+select {
+	font-family: Arial, Tahoma;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+.panel {
+	border-style: solid;
+	border-width: 1px;
+	border-color: $gray30;
+	margin-bottom: 1.25rem;
+	padding: 1.5rem;
+	background: $white;
+} 
+
+.main {
+	margin-top: 25px;
+}
+
+.section-header {
+	h2 {
+		font-family: $gibson-font-semi-bold;
+		font-size: rem-calc(19);
+		color: $mommy-orange;
+		text-transform: uppercase;
+		margin-bottom: 0.7rem;
+		margin-left: rem-calc(20);
+	}
+} 
+
+.button {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: $mommy-orange;
+	margin-bottom: 0;
+	font-family: $gibson-font-semi-bold;
+	font-size: 12px;
+	text-transform: uppercase;
+
+	&:hover,
+	&:focus {
+		background-color: $mommy-red-orange;
+		text-decoration: none;
+	}
+}
+
+.block {
+	display: block !important;
+}
+
+.orange {
+	color: $mommy-orange !important;
+}
+
+
+
+/*
+   Search Form Styles
+*/ 
+.search-form {
+	div {
+		position: relative;
+
+		&:after {
+			@include fontawesome();
+			content: "\f002";
+			color: $gray10;
+			line-height: 24px;
+			font-size: 18px;
+			position: absolute;
+			right: 10px;
+			top: 6px;
+		}
+
+		input {
+			padding-right: 30px;
+		}
+	}
+}
+
+
+
+/*
+   Side bar Styles
+*/ 
+
+.sidebar {
+	background-color: $gray60;
+	font-family: $default-font;
+
+	h3 {
+		color: $mommy-orange;
+		font-family: inherit;
+		font-size: 22px;
+		margin-top: 0;
+		line-height: 1;
+	}
+
+	&>:first-child {
+		margin-top: 0;
+	}
+
+	section {
+		border-top: solid 1px $white;
+		margin-top: 30px;
+		margin-bottom: 30px !important;
+		padding-top: 30px;
+
+		&:first-child {
+			border-top: none;
+			padding-top: 0;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+
+			li {
+				margin-top: 15px;
+
+				a {
+					@include hover-trans($black10, $teal10);
+					@include remove-underline();					
+				}
+			}
+		}
+	}    
+}

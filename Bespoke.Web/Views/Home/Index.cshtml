@@ -1,0 +1,58 @@
+﻿@model HomeViewModel
+@{
+    ViewBag.Title = Html.PageTitle();
+    Layout = "~/Views/Layouts/_Default.cshtml";
+}
+
+<section class="slides iosSlider">
+    <ul>
+        @for (var i = 0; i < 2; i++)
+        {
+            <li class="slide">
+                <img src="@Url.Content("~/Assets/Images/slider-blog.jpg")" alt="Visit our blog" />
+                <div class="callout right">
+                    <h2 class="white">Mommy Talk</h2>
+                    <span>Visit our blog</span><a class="button" href="@Url.Action("Index", "Blog")">Go Now</a>
+                </div>
+            </li>
+            <li class="slide">
+                <img src="@Url.Content("~/Assets/Images/slider-connect.jpg")" alt="Like us on Facebook" />
+                <div class="callout top">
+                    <h2>Stay Connected</h2>
+                    <span>Like us on Facebook</span><a class="button" href="https://www.facebook.com/BespokeMommy" target="_blank">Like Us</a>
+                </div>
+            </li>
+            <li class="slide">
+                <img src="@Url.Content("~/Assets/Images/slider-forum.jpg")" alt="Visit our discussions" />
+                <div class="callout left">
+                    <h2 class="white">Have a Question?</h2>
+                    <span>Visit our discussions</span><a class="button" href="@Url.Action("Index", "Discussions")">Ask Now</a>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="left-shade"></div>
+    <div class="right-shade"></div>
+    <div class="prev hide-for-touch">&lt;</div>
+    <div class="next hide-for-touch">&gt;</div>
+</section>
+
+
+<section class="main row">
+    <header class="section-header columns">
+        <h2>Latest Blog Posts</h2>
+    </header>
+    <div class="columns">
+        <div class="panel">
+            @foreach (var post in Model.RecentPosts)
+            {
+                @Html.Partial("_BlogExcerpt", post)
+            }
+            <a href="@Url.Action("Index", "Blog")" class="button block">See all blog posts</a>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    @Scripts.Render("~/bundles/vendor/iosslider")
+}

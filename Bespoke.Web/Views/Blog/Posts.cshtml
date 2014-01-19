@@ -1,0 +1,40 @@
+﻿@using Bespoke.Infrastructure.Extensions
+@model BlogViewModel
+@{
+    ViewBag.Title = Html.PageTitle("Blog", Model.PageTitle);
+    Layout = "~/Views/Layouts/_Default.cshtml";
+}
+<section class="main row">
+    <header class="columns section-header blog-header">
+        <h2>
+            <a href="@Url.Action("Index")">Blog</a>
+        </h2>
+        @if (!string.IsNullOrEmpty(Model.Filter))
+        {
+            <span class="post-filter">@Model.Filter</span>
+        }
+        @{ Html.RenderAction("Categories", "Blog");}
+    </header>
+    <div class="large-8 medium-8 columns">
+        <div class="panel">
+            @if (Model.Posts.IsNullOrEmpty())
+            {
+                <div class="post-not-found">
+                    <h2>Nothing Found</h2>
+                    <p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>
+                </div>
+            }
+            else
+            {
+                foreach (var post in Model.Posts)
+                {
+                    @Html.Partial("_BlogExcerpt", post)
+                }
+            }
+        </div>
+    </div>
+    <div class="large-4 medium-4 columns">
+        @{ Html.RenderAction("Sidebar", "Blog");}
+    </div>
+</section>
+

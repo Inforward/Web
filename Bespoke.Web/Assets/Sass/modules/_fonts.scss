@@ -1,0 +1,42 @@
+/*
+@font-face {
+  font-family: 'Gibson';
+  src: url("../fonts/gibson/Regular/Gibson-Regular-webfont.eot");
+  src: url("../fonts/gibson/Regular/Gibson-Regular-webfont.eot?#iefix") format("embedded-opentype"), 
+       url("../fonts/gibson/Regular/Gibson-Regular-webfont.woff") format("woff"), 
+	   url("../fonts/gibson/Regular/Gibson-Regular-webfont.svg#GibsonRegular") format("svg"), 
+       url("../fonts/gibson/Regular/Gibson-Regular-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; 
+}
+*/
+
+@font-face {
+  font-family: 'GibsonLight';
+  src: url("../fonts/gibson/Light/Gibson-Light-webfont.eot");
+  src: url("../fonts/gibson/Light/Gibson-Light-webfont.eot?#iefix") format("embedded-opentype"),        
+       url("../fonts/gibson/Light/Gibson-Light-webfont.woff") format("woff"), 
+	   url("../fonts/gibson/Light/Gibson-Light-webfont.svg#GibsonLightRegular") format("svg"), 
+       url("../fonts/gibson/Light/Gibson-Light-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'GibsonSemiBold';
+  src: url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.eot");
+  src: url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.woff") format("woff"), 
+	   url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.svg#GibsonSemiBold") format("svg"),
+       url("../fonts/gibson/SemiBold/Gibson-SemiBold-webfont.ttf") format("truetype");       
+  font-weight: normal;
+  font-style: normal; 
+}
+
+@font-face {
+  font-family: 'StyleFormal';
+  src: url("../fonts/style-formal/StyleFormal/StyleFormal-webfont.eot");
+  src: url("../fonts/style-formal/StyleFormal/StyleFormal-webfont.eot?#iefix") format("embedded-opentype"), 
+       url("../fonts/style-formal/StyleFormal/StyleFormal-webfont.woff") format("woff"), 
+       url("../fonts/style-formal/StyleFormal/StyleFormal-webfont.ttf") format("truetype"); 
+}

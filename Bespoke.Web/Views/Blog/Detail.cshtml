@@ -1,0 +1,52 @@
+﻿@using Bespoke.Infrastructure.Extensions
+@model PostViewModel
+@{
+    ViewBag.Title = Html.PageTitle("Blog", Model.Post.Title);
+    Layout = "~/Views/Layouts/_Default.cshtml";
+    var tagIconClass = Model.Tags.Count == 1 ? "fa-tag" : "fa-tags";
+    const string tag = "Tag";
+}
+
+<section class="main row">
+    <header class="columns section-header blog-header">
+        <h2>
+            <a href="@Url.Action("Index")">Blog</a>
+        </h2>
+
+        @{ Html.RenderAction("Categories", "Blog");}
+
+    </header>
+    <div class="large-8 medium-8 columns">
+        <div class="panel">
+            
+            @*@if (!string.IsNullOrEmpty(Model.FeaturedImageUrl))
+            {
+                <div class="post-featured-image">
+                    <img src="@Model.FeaturedImageUrl" alt="@Model.Post.Title" />
+                </div>
+            }*@
+            
+            <div class="post-featured-image">
+                <img src="@Url.Content("~/Assets/Images/blog-pic.jpg")" alt="Blog Picture" />
+            </div>
+            
+            @Html.Partial("_BlogHeader", Model)
+
+            <section class="post-content">
+                @Html.Raw(Model.Post.Content)
+            </section>
+
+            <footer class="post-footer">
+                @if (Model.Tags.Any())
+                {
+                    <section class="post-tags">
+                        <i class="fa @tagIconClass"></i> @tag.Pluralize(Model.Tags.Count): @Html.Raw(string.Join("", Model.Tags.Select(t => string.Format("<a href='{0}' rel='tag'>{1}</a>", t.Url, t.Text))))
+                    </section>
+                }
+            </footer>
+        </div>
+    </div>
+    <div class="large-4 medium-4 columns">
+        @{ Html.RenderAction("Sidebar", "Blog");}
+    </div>
+</section>

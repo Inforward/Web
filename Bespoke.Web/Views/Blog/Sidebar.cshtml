@@ -1,0 +1,68 @@
+﻿@model BlogViewModel
+
+<aside class="panel sidebar">
+    <section>
+        @using (Html.BeginForm("Search", "Blog", FormMethod.Get, new { @class="search-form"}))
+        {
+            <div>
+                <input type="text" name="s" placeholder="search blog" />
+            </div>
+        }
+    </section>
+    <section>
+        <h3>Recent Posts</h3>
+        <ul>
+            @foreach (var post in Model.Posts)
+            {
+                <li><a href="@post.Url">@Html.Raw(@post.Post.Title)</a></li>
+            }
+        </ul>
+    </section>
+    <section>
+        <h3>Tags</h3>
+        <ul class="tag-cloud">
+            <li>
+                @foreach (var tag in Model.Tags)
+                {
+                    <a href="@tag.Url" title="@tag.Title" style="font-size: @tag.TagCloudFontSize">@Html.Raw(tag.Text)</a>
+                }
+            </li>
+        </ul>
+    </section>
+    <section>
+        <h3>Archive</h3>
+        <select data-role="jump-menu">
+            <option value="">Select Month</option>
+            @foreach (var archive in Model.Archives)
+            {
+                <option value="@archive.Url">@archive.Text</option>
+            }
+        </select>
+    </section>
+    <section>
+        <div class="fb-like-box"
+             data-href="http://www.facebook.com/BespokeMommy"
+             data-show-faces="true"
+             data-header="false"
+             data-stream="false"
+             data-width="280" 
+             @*data-height="250"*@
+             data-show-border="false">
+        </div>
+    </section>
+    <section>
+        <a href="@Url.Action("Index", "Discussions")" alt="Post to discussions">
+            <img src="@Url.Content("~/Assets/Images/promo-banner-discuss.jpg")"/>
+        </a>
+    </section>
+</aside>
+
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "/" + "/connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>

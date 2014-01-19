@@ -1,0 +1,90 @@
+$banner-height: 274px;
+
+.banner {
+	&>.row {
+		position: relative;
+	}
+
+	header {
+		min-height: $banner-height;
+		z-index: 100;
+	}
+
+	.banner-bg {
+		z-index: 99;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: $banner-height;
+		opacity: .3;
+	}	
+
+	h1 {
+		font-family: $style-formal;
+		color: $white;
+		font-size: rem-calc(48);
+		text-transform: lowercase;	
+		line-height: 1;	
+		margin-top: 35px;
+		margin-bottom: 25px;
+	}
+
+	.subtitle {
+		color: $teal10;
+		font-family: $default-font;
+		font-size: rem-calc(20);
+		margin-bottom: 0;
+
+	}
+
+	.intro {
+		color: $yellow20;
+		font-family: $default-font;
+		font-size: rem-calc(24);
+	}
+
+	h1,
+	.subtitle,
+	.intro {
+		text-shadow: 2px 0 $black20;
+	}
+}
+
+.blog-banner {
+	background: url(../images/banner-bg.png) no-repeat $gray10;
+	background-size: cover;
+
+	.banner-bg {
+		background: url(../images/blog-cover-photo.png) center right no-repeat;				
+		width: 747px;
+		margin-right: -260px;
+		@include transition (opacity 0.5s ease-in-out);		
+	}	
+}
+
+@media #{$medium-up} {
+	.banner {
+		h1 {
+			font-size: rem-calc(65);
+			margin-bottom: 35px;
+		}
+
+		.subtitle {
+			font-size: rem-calc(20);
+		}
+
+		.intro {
+			font-size: rem-calc(25);
+		}
+	}
+
+	.blog-banner .banner-bg {
+		margin-right: -100px;
+	}
+}
+
+@media only screen and (min-width: 715px) {
+	.banner .banner-bg {
+		opacity: 1.0;
+	}
+}

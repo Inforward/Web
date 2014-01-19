@@ -1,0 +1,90 @@
+
+/* 
+   Foundation - http://foundation.zurb.com/ 
+*/
+
+@import "../foundation/_settings";
+
+
+/*
+   Bourbon - http://bourbon.io/ 
+*/
+
+@import "../bourbon/_bourbon";
+$rounded: 2px;
+$shadow: rgba(0,0,0,0.05) 0 1px 5px;
+$default-transition-duration: 0.3s;
+
+
+/*
+   Colors
+*/
+
+$white: #fff;
+$mommy-orange: #f38368;
+$mommy-red-orange: #e56a5d;
+$teal: #25bec2;
+$teal10: #84cdc1;
+$teal20: #23B9A1;
+$gray10: #807f83;
+$gray20: #b6b8ba;
+$gray30: #d8d8d8;
+$gray40: #3d3d3d;
+$gray50: #414141;
+$gray60: #efefef;
+$gray70: #f6f6f6;
+$yellow10: #fff7e8;
+$yellow20: #ffdc7a;
+$black: #000;
+$black10: #2b2b2b;
+$black20: #4d4c50;
+
+
+/*
+   Typography
+*/
+
+$default-font: 'Open Sans', sans-serif;
+$gibson: 'Gibson', Arial, Tahoma;
+$gibson-font-light: 'GibsonLight', Arial, Tahoma;
+$gibson-font-semi-bold: 'GibsonSemiBold', Arial, Tahoma;
+$style-formal: 'StyleFormal', Arial, Tahoma;
+
+
+/*
+   Global Elements
+*/
+
+$top-nav-height: 40px;
+$global-radius:	3px !default;   
+
+
+@mixin radius($radius:$global-radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin hover-trans($color, $hover-color) {
+  color: $color;
+  @include transition (all 0.3s ease);
+
+  &:hover {
+    color: $hover-color;
+  }
+}
+
+@mixin fontawesome(){
+	display: inline-block;
+	font-family: FontAwesome !important;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin remove-underline(){
+	&:hover {
+		text-decoration: none;
+	}
+}

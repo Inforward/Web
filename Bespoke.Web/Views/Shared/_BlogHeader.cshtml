@@ -1,0 +1,16 @@
+﻿@model PostViewModel
+           
+<header class="post-header">
+    <p class="post-category">
+        @string.Join(" /", Model.Post.Categories.Select(c => c.Title))</p>
+    <h2 class="post-title">
+        <a href="@Model.Url">@Html.Raw(Model.Post.Title)</a></h2>
+    <div class="post-meta">
+        <p class="post-author">
+            By <a href="@Url.Action("Author", "Blog", new { slug = Model.Post.Author.Slug })" rel="author">@Model.Post.Author.Name</a></p>
+        <p class="post-date">
+            @Model.Post.CreateDate.ToString("MMMM d, yyyy")</p>
+        <p class="post-comment-count">
+            <i class="fa fa-comments-o"></i> @Model.Post.CommentCount</p>
+    </div>
+</header>
