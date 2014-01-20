@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace Bespoke.Models.Blog
 {
+    [Serializable]
     public class Images
     {
         [JsonProperty(PropertyName = "full")]

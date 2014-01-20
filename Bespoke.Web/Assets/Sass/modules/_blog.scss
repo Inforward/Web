@@ -149,6 +149,12 @@
 	}
 }
 
+.post-content p {
+	&:first-child {
+		margin-top: 20px;
+	}
+}
+
 .post-excerpt {
 
 	.read-more {

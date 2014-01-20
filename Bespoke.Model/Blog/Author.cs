@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Bespoke.Models.Blog
 {
+    [Serializable]
     public class Author
     {
         [JsonProperty(PropertyName = "id")]

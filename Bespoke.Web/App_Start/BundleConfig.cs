@@ -24,26 +24,33 @@ namespace Bespoke.Web
                 "~/Assets/vendor/foundation/foundation.offcanvas.js",
                 "~/Assets/vendor/jquery.scroll-start-stop.js",
                 "~/Assets/vendor/jquery-ui-1.10.4.custom.js",
-                "~/Assets/vendor/jquery.sharrre.js",
-                "~/Assets/vendor/bamboo.0.1.js"));
+                "~/Assets/vendor/jquery.sharrre.js"));
 
             // Miscellaneous (single-page) js bundles
             bundles.Add(new ScriptBundle("~/bundles/vendor/modernizr").Include("~/Assets/vendor/custom.modernizr.min.js"));
-            bundles.Add(new ScriptBundle("~/bundles/vendor/iosslider").Include("~/Assets/vendor/jquery.iosslider.min.js"));
+
+            // Home page bundle
+            bundles.Add(new ScriptBundle("~/bundles/vendor/home").Include(
+                "~/Assets/vendor/jquery.iosslider.min.js",
+                "~/Assets/vendor/jquery.themepunch.plugins.min.js",
+                "~/Assets/vendor/jquery.themepunch.showbizpro.min.js"));
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             // All css
             var bundle = new StyleBundle("~/bundles/css");
-
-            bundle.Include("~/Assets/css/bamboo.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/normalize.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/foundation.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/font-awesome.css", new CssRewriteUrlTransform());
             bundle.Include("~/Assets/css/screen.css", new CssRewriteUrlTransform());
-
             bundles.Add(bundle);
+
+            // Home page bundle
+            var homeBundle = new StyleBundle("~/bundles/css/home");
+            homeBundle.Include("~/Assets/css/showbiz.css", new CssRewriteUrlTransform());
+            bundles.Add(homeBundle);
+
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Bespoke.Models.Blog
 {
+    [Serializable]
     public class Attachment
     {
         public Attachment()

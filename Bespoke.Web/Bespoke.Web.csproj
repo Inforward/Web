@@ -190,22 +190,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="apple-touch-icon-precomposed.png" />
-    <Content Include="Assets\Css\bamboo.css" />
     <Content Include="Assets\Css\font-awesome.css" />
     <Content Include="Assets\Css\foundation.css" />
     <Content Include="Assets\Css\normalize.css" />
     <Content Include="Assets\Css\screen.css" />
+    <Content Include="Assets\Css\showbiz.css" />
     <Content Include="Assets\Fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Assets\Fonts\fontello\fontello.svg" />
     <Content Include="Assets\Fonts\gibson\Light\Gibson-Light-webfont.svg" />
     <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.svg" />
     <Content Include="Assets\Fonts\gibson\Regular\Gibson-Regular-webfont.svg" />
     <Content Include="Assets\Fonts\gibson\SemiBold\Gibson-SemiBold-webfont.svg" />
     <Content Include="Assets\Images\banner-bg.png" />
     <Content Include="Assets\Images\bd-logo-343x117.png" />
+    <Content Include="Assets\Images\blog-banner-bg.jpg" />
     <Content Include="Assets\Images\blog-cover-photo.png" />
     <Content Include="Assets\Images\blog-pic.jpg" />
     <Content Include="Assets\Images\discussion-pic.png" />
-    <Content Include="Assets\Images\discussions-banner.jpg" />
+    <Content Include="Assets\Images\discussions-banner-bg.jpg" />
+    <Content Include="Assets\Images\discussions-cover-photo.png" />
     <Content Include="Assets\Images\header-background.png" />
     <Content Include="Assets\Images\logo-432x153.png" />
     <Content Include="Assets\Images\promo-banner-blog.jpg" />
@@ -219,7 +222,6 @@
     <Content Include="Assets\Scripts\app.js" />
     <Content Include="Assets\Scripts\article-share.js" />
     <Content Include="Assets\Scripts\header.js" />
-    <Content Include="Assets\Vendor\bamboo.0.1.js" />
     <Content Include="Assets\Vendor\custom.modernizr.min.js" />
     <Content Include="Assets\Vendor\Foundation\foundation.abide.js" />
     <Content Include="Assets\Vendor\Foundation\foundation.accordion.js" />
@@ -240,6 +242,8 @@
     <Content Include="Assets\Vendor\jquery.iosslider.min.js" />
     <Content Include="Assets\Vendor\jquery.scroll-start-stop.js" />
     <Content Include="Assets\Vendor\jquery.sharrre.js" />
+    <Content Include="Assets\Vendor\jquery.themepunch.plugins.min.js" />
+    <Content Include="Assets\Vendor\jquery.themepunch.showbizpro.min.js" />
     <Content Include="Assets\Vendor\respond.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -467,6 +471,16 @@
     <Content Include="Assets\Fonts\gibson\RegularBold\Gibson-Bold-webfont.woff" />
     <Content Include="Assets\Sass\modules\_article-share.scss" />
     <Content Include="Assets\Sass\modules\_sidebar.scss" />
+    <Content Include="Assets\Sass\showbiz.scss">
+      <Compile>True</Compile>
+      <Minify>True</Minify>
+      <OutputFolder>..\Css</OutputFolder>
+      <CompileStyle>Nested</CompileStyle>
+      <DebugInfo>False</DebugInfo>
+    </Content>
+    <Content Include="Assets\Fonts\fontello\fontello.eot" />
+    <Content Include="Assets\Fonts\fontello\fontello.ttf" />
+    <Content Include="Assets\Fonts\fontello\fontello.woff" />
     <None Include="Properties\PublishProfiles\bespokemommy.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\Discussions\Index.cshtml" />

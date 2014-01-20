@@ -45,7 +45,7 @@
     <Compile Include="Caching\HttpContextCacheStorage.cs" />
     <Compile Include="Caching\ICacheStorage.cs" />
     <Compile Include="Configuration\SettingsHelper.cs" />
-    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Extensions\FormatExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

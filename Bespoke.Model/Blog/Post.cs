@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace Bespoke.Models.Blog
 {
+    [Serializable]
     public class Post
     {
         public Post()

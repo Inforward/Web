@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bespoke.Models.Blog
 {
+    [Serializable]
     public class Archive
     {
         public DateTime ArchiveDate { get; set; }

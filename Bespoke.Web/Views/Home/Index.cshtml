@@ -4,6 +4,10 @@
     Layout = "~/Views/Layouts/_Default.cshtml";
 }
 
+@section head {
+    @Styles.Render("~/bundles/css/home")
+}
+
 <section class="slides iosSlider">
     <ul>
         @for (var i = 0; i < 2; i++)
@@ -44,15 +48,67 @@
     </header>
     <div class="columns">
         <div class="panel">
-            @foreach (var post in Model.RecentPosts)
+            @*@foreach (var post in Model.RecentPosts)
             {
                 @Html.Partial("_BlogExcerpt", post)
-            }
+            }*@
+
+            <div id="latests-posts" class="showbiz-container">                
+                <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1">
+                    <div class="overflowholder">
+                        <ul>
+                            @foreach (var post in Model.RecentPosts)
+                            {
+                                <li>
+                                    <article class="post">
+                                        <div class="post-thumbnail">
+                                            @*<img src="@Model.ThumbnailImageUrl" alt="Blog Picture" />*@
+                                            <img src="@Url.Content("~/Assets/Images/blog-pic.jpg")" alt="Blog Picture" />
+                                        </div>
+                                        @Html.Partial("_BlogHeader", post)
+                                        <section class="post-excerpt">
+                                            @Html.Raw(post.Excerpt)
+                                        </section>
+                                    </article>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="showbiz-navigation center sb-nav-grey">
+                    <a id="showbiz_left_1" class="sb-navigation-left"><i class="sb-icon-left-open"></i></a>
+                    <a id="showbiz_play_1" class="sb-navigation-play"><i class="sb-icon-play sb-playbutton"></i><i class="sb-icon-pause sb-pausebutton"></i></a>
+                    <a id="showbiz_right_1" class="sb-navigation-right"><i class="sb-icon-right-open"></i></a>
+                    <div class="sbclear"></div>
+                </div>
+            </div>
+
+
             <a href="@Url.Action("Index", "Blog")" class="button block">See all blog posts</a>
         </div>
     </div>
 </section>
 
 @section scripts {
-    @Scripts.Render("~/bundles/vendor/iosslider")
+    @Scripts.Render("~/bundles/vendor/home")
+
+    <script>
+        (function($) {
+            $(function() {
+                $('#latests-posts').showbizpro({
+                    dragAndScroll: "off",
+                    carousel: "off",
+                    allEntryAtOnce: "off",
+                    closeOtherOverlays: "off",
+                    entrySizeOffset: 0,
+                    heightOffsetBottom: 0,
+                    conteainerOffsetRight: 0,
+                    visibleElementsArray: [3, 2, 1],
+                    rewindFromEnd: "off",
+                    autoPlay: "on",
+                    delay: "5000",
+                    speed: "300"                });
+            });
+        })(jQuery);
+    </script>
 }

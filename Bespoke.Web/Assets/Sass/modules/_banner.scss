@@ -51,7 +51,7 @@ $banner-height: 274px;
 }
 
 .blog-banner {
-	background: url(../images/banner-bg.png) no-repeat $gray10;
+	background: url(../images/blog-banner-bg.jpg) no-repeat $gray10;
 	background-size: cover;
 
 	.banner-bg {
@@ -63,8 +63,15 @@ $banner-height: 274px;
 }
 
 .discussions-banner {
-	background: url(../images/discussions-banner.jpg) no-repeat $black;
+	background: url(../images/discussions-banner-bg.jpg) no-repeat $black10;
 	background-size: cover;
+
+	.banner-bg {
+		background: url(../images/discussions-cover-photo.png) center right no-repeat;				
+		width: 747px;
+		margin-right: -100px;
+		@include transition (opacity 0.5s ease-in-out);		
+	}	
 }
 
 @media #{$medium-up} {
@@ -86,10 +93,20 @@ $banner-height: 274px;
 	.blog-banner .banner-bg {
 		margin-right: -100px;
 	}
+
+	.discussions-banner .banner-bg {
+		margin-right: 0;
+	}
 }
 
 @media only screen and (min-width: 715px) {
-	.banner .banner-bg {
+	.blog-banner .banner-bg {
+		opacity: 1.0;
+	}
+}
+
+@media only screen and (min-width:850px) {
+	.discussions-banner .banner-bg {
 		opacity: 1.0;
 	}
 }

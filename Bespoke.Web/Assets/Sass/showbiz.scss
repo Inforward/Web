@@ -1,0 +1,187 @@
+@charset "IBM437";
+/******************************
+	-	SHOWBIZ PRO STYLES	-
+
+
+	Created By ThemePunch
+	www.themepunch.com
+
+	Release Date: 27.02.2013
+********************************/
+/******************************
+	-	THE FONTELLO ICONS	-
+********************************/
+@font-face {
+    font-family: 'showbiz-fontello';
+    src: url("../fonts/fontello/fontello.eot");
+    src: url("../fonts/fontello/fontello.eot?#iefix") format("embedded-opentype"), url("../fonts/fontello/fontello.woff") format("woff"), url("../fonts/fontello/fontello.ttf") format("truetype"), url("../fonts/fontello/fontello.svg#fontello") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="sb-icon-"]:before,
+[class*="sb-icon-"]:before {
+    font-family: 'showbiz-fontello';
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    text-align: center;
+    line-height: 1em;
+}
+
+
+.sb-icon-pause:before {
+    content: '\e802';
+}
+
+
+.sb-icon-play:before {
+    content: '\e804';
+}
+
+.sb-icon-left-open:before {
+    content: '\e808';
+}
+
+/* '?' */
+.sb-icon-right-open:before {
+    content: '\e80b';
+}
+
+.showbiz-navigation {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+/**************************************
+	-	BASIC STYLING FOR CONTENTS	-
+***************************************/
+.showbiz {
+    position: relative;
+}
+
+.sbclear {
+    clear: both;
+}
+
+
+/*********************************************************
+			-	NAVIGATION SETTINGS	-
+	USE STYLE CLASS IN THE SHOWBIZ NAVIGATION CONTAINER
+**********************************************************/
+.showbiz-navigation.center {
+    text-align: center;
+}
+
+.sb-navigation-left,
+.sb-navigation-right,
+.sb-navigation-play {
+    cursor: pointer;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    display: inline-block;
+    padding: 1px 3px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/**/
+.sb-navigation-play {
+    margin-right: 5px;
+}
+
+.sb-navigation-left {
+    margin-right: 5px;
+}
+
+    .sb-navigation-left i,
+    .sb-navigation-right i,
+    .sb-navigation-play i {
+        font-size: 22px;
+        color: #fff;
+    }
+
+.sb-navigation-right.notclickable {
+    cursor: default;
+    -moz-opacity: 0.3;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+}
+
+.sb-hidden {
+    display: none;
+}
+
+.sb-nav-grey .sb-navigation-right.notclickable:hover,
+.sb-nav-grey .sb-navigation-left,
+.sb-nav-grey .sb-navigation-right,
+.sb-nav-grey .sb-navigation-play {
+    background: #919191;
+    background: -moz-linear-gradient(top, #919191 0%, #6b6b6b 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #919191), color-stop(100%, #6b6b6b));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#919191', endColorstr='#6b6b6b',GradientType=0 );
+    border-top: 1px solid #919191;
+    border-left: 1px solid #969696;
+    border-right: 1px solid #969696;
+    border-bottom: 1px solid #6c6c6;
+}
+
+    .sb-nav-grey .sb-navigation-left:hover,
+    .sb-nav-grey .sb-navigation-right:hover,
+    .sb-nav-grey .sb-navigation-play:hover {
+        background: #919191;
+        background: -moz-linear-gradient(top, #6b6b6b 0%, #919191 100%);
+        /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6b6b6b), color-stop(100%, #919191));
+        background: -webkit-linear-gradient(top, #6b6b6b 0%,á, #919191 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b6b6b', endColorstr='#919191',GradientType=0 );
+    }
+
+.showbiz ul, .showbiz li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .showbiz ul li {
+        position: relative;
+        -webkit-transform: translateZ(10);
+        -webkit-backface-visibility: hidden;
+        -webkit-perspective: 1000;
+        margin-right: 15px;
+    }
+
+.showbiz .overflowholder {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    z-index: 2;
+}
+
+    .showbiz .overflowholder ul {
+        width: 100000px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+
+        .showbiz .overflowholder ul li {
+            float: left !important;
+            -webkit-transition: all 0.25s ease;
+            -moz-transition: all 0.25s ease-in-out;
+            -o-transition: all 0.25s ease-in-out;
+            -ms-transition: all 0.25s ease-in-out;
+            transition: all 0.25s ease-in-out;
+            position: relative;
+        }
