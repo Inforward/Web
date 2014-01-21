@@ -10,23 +10,23 @@
     <link rel="sitemap" type="application/xml" title="Sitemap" href="~/sitemap.xml">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="rating" content="General">
+    <meta name="msapplication-TileColor" content="#D83434">
+    <meta name="msapplication-TileImage" content="~/apple-touch-icon-precomposed.png">
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="@ViewBag.Title" />
+    @Html.RenderTags(ViewBag.Tags as List<TagModel>)
     @RenderSection("meta", required: false)
+
     @*<link rel="publisher" href="https://plus.google.com/+houzz/">
     <meta name="google-site-verification" content="">
     <meta name="msvalidate.01" content="">
     <meta name="description" content="">
-    <meta name="keywords" content="">*@
-    <meta name="author" content="Bespoke Mommy">
-    <meta name="application-name" content="Bespoke Mommy">
-    <meta name="msapplication-TileColor" content="#D83434">
-    <meta name="msapplication-TileImage" content="~/apple-touch-icon-precomposed.png">
-    <meta property="fb:app_id" content="" />
+    <meta name="keywords" content="">
     <meta property="og:type" content="" />
-    <meta property="og:site_name" content="" />
     <meta property="og:url" content="" />
-    <meta property="og:title" content="" />
     <meta property="og:image" content="" />
-    <meta property="og:description" content="" />
+    <meta property="og:description" content="" />*@
+
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700,300" rel="stylesheet" type="text/css">
     @Styles.Render("~/bundles/css")
     @Scripts.Render("~/bundles/vendor/modernizr")
@@ -66,7 +66,7 @@
     @Scripts.Render("~/bundles/vendor")
     @Scripts.Render("~/bundles/scripts")
     @RenderSection("scripts", required: false)
-    
+
     @if (!HttpContext.Current.IsDebuggingEnabled)
     {
         <script>

@@ -24,6 +24,7 @@ namespace Bespoke.Services
 
         private readonly string _blogBaseUrl;
         private readonly ICacheStorage _cacheStorage;
+        private readonly int _cacheDuration;
 
         #endregion
 
@@ -33,6 +34,7 @@ namespace Bespoke.Services
         {
             _cacheStorage = cacheStorage;
             _blogBaseUrl = SettingsHelper.Get<string>("Blog.Wordpress.BaseUrl");
+            _cacheDuration = SettingsHelper.Get<int>("Cache.BlogService.Duration.Minutes", 30);
 
             if(string.IsNullOrEmpty(_blogBaseUrl))
                 throw new ApplicationException("No value set for AppSetting Blog.Wordpress.BaseUrl.");
@@ -82,14 +84,14 @@ namespace Bespoke.Services
         {
             var url = string.Concat(_blogBaseUrl, "api/get_recent_posts/?page=", pageNumber);
 
-            return _cacheStorage.Retrieve(url, () => GetPosts(pageNumber, () => RequestData<GetPostsResponse>(url)));
+            return _cacheStorage.Retrieve(url, _cacheDuration, () => GetPosts(pageNumber, () => RequestData<GetPostsResponse>(url)));
         }
 
         public IEnumerable<Archive> GetPostArchiveTree()
         {
             var url = string.Concat(_blogBaseUrl, "api/get_date_index");
 
-            var response = _cacheStorage.Retrieve(url, () => RequestData<GetPostArchiveTreeResponse>(url));
+            var response = _cacheStorage.Retrieve(url, _cacheDuration, () => RequestData<GetPostArchiveTreeResponse>(url));
 
             var list = new List<Archive>();
 
@@ -123,7 +125,7 @@ namespace Bespoke.Services
         {
             var url = string.Concat(_blogBaseUrl, "api/get_category_index");
 
-            var response = _cacheStorage.Retrieve(url, () => RequestData<GetCategoriesResponse>(url));
+            var response = _cacheStorage.Retrieve(url, _cacheDuration, () => RequestData<GetCategoriesResponse>(url));
 
             return response.Categories;
         }
@@ -132,7 +134,7 @@ namespace Bespoke.Services
         {
             var url = string.Concat(_blogBaseUrl, "api/get_tag_index");
 
-            var response = _cacheStorage.Retrieve(url, () => RequestData<GetTagsResponse>(url));
+            var response = _cacheStorage.Retrieve(url, _cacheDuration, () => RequestData<GetTagsResponse>(url));
 
             return response.Tags;
         }

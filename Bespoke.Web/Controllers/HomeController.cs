@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Bespoke.Infrastructure.Extensions;
-using Bespoke.Models.Blog;
 using Bespoke.Services.Contracts;
 using Bespoke.Web.Models;
-using Bespoke.Web.Models.Blog;
 
 namespace Bespoke.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-         private readonly IBlogService _blogService;
+        private readonly IBlogService _blogService;
 
-         public HomeController(IBlogService blogService)
+        public HomeController(IBlogService blogService)
         {
             _blogService = blogService;
         }

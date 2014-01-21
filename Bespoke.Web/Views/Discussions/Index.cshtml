@@ -4,6 +4,10 @@
     Layout = "~/Views/Layouts/_Default.cshtml";
 }
 
+@section head {
+    <link rel="stylesheet" href="//cdn.moot.it/1/moot.css">
+}
+
 <section class="banner discussions-banner">
     <div class="row">
         <header class="columns">
@@ -14,3 +18,11 @@
         <div class="banner-bg"></div>
     </div>
 </section>
+
+<section>
+    <a class="moot" href="https://moot.it/i/bespokemommy">bespokemommy forums</a>
+</section>
+
+@section scripts {
+    <script src="//cdn.moot.it/1/moot.min.js"></script>
+}

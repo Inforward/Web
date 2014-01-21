@@ -23,6 +23,7 @@
 	ul li a {
 		display: inline-block;
 		margin-bottom: 5px;
+		text-decoration: none;
 		@include hover-trans(inherit, $white);
 	}
 }

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Bespoke.Infrastructure.Configuration;
+using Bespoke.Infrastructure.Extensions;
+using Bespoke.Web.Models;
 
 namespace Bespoke.Web.Helpers
 {
@@ -12,7 +15,7 @@ namespace Bespoke.Web.Helpers
     {
         public static string PageTitle(this HtmlHelper helper, string subtitle = null)
         {
-            var title = SettingsHelper.Get<string>("Site.Title");
+            var title = SettingsHelper.Get<string>("Site.Name");
 
             if (!string.IsNullOrWhiteSpace(subtitle))
                 title = string.Format("{0} | {1}", title, subtitle);
@@ -37,6 +40,20 @@ namespace Bespoke.Web.Helpers
             var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
 
             return string.Format("{0} {1}", routeValues["controller"], routeValues["action"]).ToLower();
+        }
+
+        public static MvcHtmlString RenderTags(this HtmlHelper helper, List<TagModel> tags)
+        {
+            if (tags.IsNullOrEmpty()) return MvcHtmlString.Empty;
+
+            var sb = new StringBuilder();
+
+            foreach (var tag in tags)
+            {
+                sb.AppendLine(tag.ToString());
+            }
+
+            return new MvcHtmlString(sb.ToString());
         }
     }
 }

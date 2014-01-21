@@ -362,6 +362,7 @@ a:hover {
   .footer-nav ul li a {
     display: inline-block;
     margin-bottom: 5px;
+    text-decoration: none;
     color: inherit;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;

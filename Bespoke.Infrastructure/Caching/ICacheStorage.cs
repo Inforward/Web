@@ -10,8 +10,9 @@ namespace Bespoke.Infrastructure.Caching
     {
         void Remove(string key);
         void Store(string key, object data);
-        void Store(string key, object data, int cacheExpirationInSeconds);
+        void Store(string key, object data, int cacheDurationMinutes);
         T Retrieve<T>(string storageKey);
         T Retrieve<T>(string storageKey, Func<T> fetchMethod);
+        T Retrieve<T>(string storageKey, int cacheDurationMinutes, Func<T> fetchMethod);
     }
 }

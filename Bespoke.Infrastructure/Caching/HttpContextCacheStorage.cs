@@ -16,9 +16,9 @@ namespace Bespoke.Infrastructure.Caching
             Store(key, data, (60 * 20));
         }
 
-        public void Store(string key, object data, int cacheExpirationInSeconds)
+        public void Store(string key, object data, int cacheDurationMinutes)
         {
-            HttpRuntime.Cache.Insert(key, data, null, DateTime.Now.AddSeconds(cacheExpirationInSeconds), Cache.NoSlidingExpiration);
+            HttpRuntime.Cache.Insert(key, data, null, DateTime.Now.AddMinutes(cacheDurationMinutes), Cache.NoSlidingExpiration);
         }
 
         public T Retrieve<T>(string key)
@@ -28,6 +28,11 @@ namespace Bespoke.Infrastructure.Caching
 
         public T Retrieve<T>(string key, Func<T> fetchMethod)
         {
+            return Retrieve(key, 30, fetchMethod);
+        }
+
+        public T Retrieve<T>(string key, int cacheDurationMinutes, Func<T> fetchMethod)
+        {
             var result = Retrieve<T>(key);
 
             if (result == null)
@@ -35,7 +40,7 @@ namespace Bespoke.Infrastructure.Caching
                 result = fetchMethod();
 
                 if (result != null)
-                    Store(key, result);
+                    Store(key, result, cacheDurationMinutes);
             }
 
             return result;

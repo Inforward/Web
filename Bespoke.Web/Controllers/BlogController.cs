@@ -6,12 +6,11 @@ using Bespoke.Models.Blog;
 using Bespoke.Services.Contracts;
 using Bespoke.Services.Messages.Blog;
 using Bespoke.Web.Models.Blog;
-using Microsoft.Ajax.Utilities;
 
 namespace Bespoke.Web.Controllers
 {
     [RoutePrefix("blog")]
-    public class BlogController : Controller
+    public class BlogController : BaseController
     {
         #region Private Members
 
@@ -147,14 +146,11 @@ namespace Bespoke.Web.Controllers
 
         public static PostViewModel ToPostViewModel(Post post)
         {
-            var viewModel = new PostViewModel
+            return new PostViewModel
                 {
                     Post = post, 
                     Tags = post.Tags.Select(ToTagViewModel).ToList()
                 };
-
-            return viewModel;
-
         }
 
         public static CategoryViewModel ToCategoryViewModel(Category category)
@@ -237,6 +233,12 @@ namespace Bespoke.Web.Controllers
             {
                 viewModel.NextPageUrl = string.Format("{0}/page/{1}", baseUrl, viewModel.CurrentPage + 1);
             }
+
+            if (!string.IsNullOrEmpty(viewModel.PreviousPageUrl))
+                AddLinkTag("prev", viewModel.PreviousPageUrl);
+
+            if (!string.IsNullOrEmpty(viewModel.NextPageUrl))
+                AddLinkTag("next", viewModel.NextPageUrl);
 
             return viewModel;
         }

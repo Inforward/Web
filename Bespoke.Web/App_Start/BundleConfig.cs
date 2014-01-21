@@ -26,8 +26,10 @@ namespace Bespoke.Web
                 "~/Assets/vendor/jquery-ui-1.10.4.custom.js",
                 "~/Assets/vendor/jquery.sharrre.js"));
 
-            // Miscellaneous (single-page) js bundles
-            bundles.Add(new ScriptBundle("~/bundles/vendor/modernizr").Include("~/Assets/vendor/custom.modernizr.min.js"));
+            // Header bundle
+            bundles.Add(new ScriptBundle("~/bundles/vendor/modernizr").Include(
+                "~/Assets/vendor/custom.modernizr.min.js",
+                "~/Assets/vendor/respond.js"));
 
             // Home page bundle
             bundles.Add(new ScriptBundle("~/bundles/vendor/home").Include(

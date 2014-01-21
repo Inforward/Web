@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Bespoke.Web.Controllers
 {
-    public class DiscussionsController : Controller
+    public class DiscussionsController : BaseController
     {
         public ActionResult Index()
         {
