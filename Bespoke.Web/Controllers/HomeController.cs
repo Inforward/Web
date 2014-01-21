@@ -22,7 +22,8 @@ namespace Bespoke.Web.Controllers
 
         public ActionResult Index()
         {
-            var posts = _blogService.GetRecentPosts().Take(10).ToList();
+            var response = _blogService.GetRecentPosts().Clone();
+            var posts = response.Posts;
 
             if (posts.Count < 10 && posts.Count > 0)
             {

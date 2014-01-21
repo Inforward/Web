@@ -3,8 +3,7 @@
 <article class="post row">
     <div class="columns">
         <div class="post-thumbnail">
-            @*<img src="@Model.ThumbnailImageUrl" alt="Blog Picture" />*@
-            <img src="@Url.Content("~/Assets/Images/blog-pic.jpg")" alt="Blog Picture" />
+            <img src="@Model.ThumbnailImageUrl" alt="Blog Picture" />
         </div>
         @Html.Partial("_BlogHeader", Model)
         <section class="post-excerpt">

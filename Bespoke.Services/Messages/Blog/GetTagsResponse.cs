@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Bespoke.Models.Blog;
 using Newtonsoft.Json;
 
-namespace Bespoke.Services.Messages.Blog.Wordpress
+namespace Bespoke.Services.Messages.Blog
 {
+    [Serializable]
     public class GetTagsResponse : BaseResponse
     {
         [JsonProperty(PropertyName = "tags")]
-        public List<Tag> Tags  { get; set; }
+        public List<Tag> Tags { get; set; }
     }
 }

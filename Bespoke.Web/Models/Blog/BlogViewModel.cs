@@ -2,7 +2,7 @@
 
 namespace Bespoke.Web.Models.Blog
 {
-    public class BlogViewModel
+    public class BlogViewModel : PagerModel
     {
         public BlogViewModel()
         {
@@ -19,6 +19,4 @@ namespace Bespoke.Web.Models.Blog
         public List<TagViewModel> Tags { get; set; }
         public List<ArchiveViewModel> Archives { get; set; }
     }
-
-    
 }

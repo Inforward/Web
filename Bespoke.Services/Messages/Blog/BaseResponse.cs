@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Bespoke.Services.Messages.Blog.Wordpress
+namespace Bespoke.Services.Messages.Blog
 {
+    [Serializable]
     public abstract class BaseResponse
     {
         [JsonProperty(PropertyName = "status")]
@@ -20,5 +17,7 @@ namespace Bespoke.Services.Messages.Blog.Wordpress
 
         [JsonProperty(PropertyName = "pages")]
         public int Pages { get; set; }
+
+        public int Page { get; set; }
     }
 }

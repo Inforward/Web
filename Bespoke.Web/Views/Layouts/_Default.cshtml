@@ -32,7 +32,7 @@
     @Scripts.Render("~/bundles/vendor/modernizr")
     @RenderSection("head", required: false)
 </head>
-<body>
+<body class="@Html.BodyCssClass()">
     <div class="off-canvas-wrap">
         <div class="inner-wrap">
             <aside class="left-off-canvas-menu">

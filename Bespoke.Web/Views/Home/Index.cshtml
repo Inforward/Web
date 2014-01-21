@@ -48,13 +48,8 @@
     </header>
     <div class="columns">
         <div class="panel">
-            @*@foreach (var post in Model.RecentPosts)
-            {
-                @Html.Partial("_BlogExcerpt", post)
-            }*@
-
-            <div id="latests-posts" class="showbiz-container">                
-                <div class="showbiz" data-left="#showbiz_left_1" data-right="#showbiz_right_1" data-play="#showbiz_play_1">
+            <div id="latests-posts">                
+                <div class="showbiz" data-left="#showbiz-left" data-right="#showbiz-right" data-play="#showbiz-play">
                     <div class="overflowholder">
                         <ul>
                             @foreach (var post in Model.RecentPosts)
@@ -62,8 +57,7 @@
                                 <li>
                                     <article class="post">
                                         <div class="post-thumbnail">
-                                            @*<img src="@Model.ThumbnailImageUrl" alt="Blog Picture" />*@
-                                            <img src="@Url.Content("~/Assets/Images/blog-pic.jpg")" alt="Blog Picture" />
+                                            <img src="@post.ThumbnailImageUrl" alt="Blog Picture" />
                                         </div>
                                         @Html.Partial("_BlogHeader", post)
                                         <section class="post-excerpt">
@@ -75,11 +69,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="showbiz-navigation center sb-nav-grey">
-                    <a id="showbiz_left_1" class="sb-navigation-left"><i class="sb-icon-left-open"></i></a>
-                    <a id="showbiz_play_1" class="sb-navigation-play"><i class="sb-icon-play sb-playbutton"></i><i class="sb-icon-pause sb-pausebutton"></i></a>
-                    <a id="showbiz_right_1" class="sb-navigation-right"><i class="sb-icon-right-open"></i></a>
-                    <div class="sbclear"></div>
+                <div class="showbiz-navigation">
+                    <a id="showbiz-left" class="sb-navigation-left"><i class="fa fa-chevron-circle-left"></i></a>
+                    <a id="showbiz-play" class="sb-navigation-play"><i class="fa fa-play sb-playbutton"></i><i class="fa fa-pause sb-pausebutton"></i></a>
+                    <a id="showbiz-right" class="sb-navigation-right"><i class="fa fa-chevron-circle-right"></i></a>
                 </div>
             </div>
 

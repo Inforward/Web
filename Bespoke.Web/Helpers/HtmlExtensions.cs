@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 using Bespoke.Infrastructure.Configuration;
 
 namespace Bespoke.Web.Helpers
@@ -29,6 +30,13 @@ namespace Bespoke.Web.Helpers
             }
 
             return title;
+        }
+
+        public static string BodyCssClass(this HtmlHelper helper)
+        {
+            var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+
+            return string.Format("{0} {1}", routeValues["controller"], routeValues["action"]).ToLower();
         }
     }
 }

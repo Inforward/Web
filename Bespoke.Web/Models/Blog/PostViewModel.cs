@@ -20,9 +20,9 @@ namespace Bespoke.Web.Models.Blog
             {
                 var imageUrl = default(string);
 
-                if (Post.ThumbnailImages != null && Post.ThumbnailImages.Thumbnail != null && !string.IsNullOrEmpty(Post.ThumbnailImages.Thumbnail.Url))
+                if (Post.ThumbnailImages != null && Post.ThumbnailImages.PostThumbnail != null && !string.IsNullOrEmpty(Post.ThumbnailImages.PostThumbnail.Url))
                 {
-                    imageUrl = Post.ThumbnailImages.Thumbnail.Url;
+                    imageUrl = Post.ThumbnailImages.PostThumbnail.Url;
                 }
 
                 if (string.IsNullOrEmpty(imageUrl) && !Post.Attachments.IsNullOrEmpty())

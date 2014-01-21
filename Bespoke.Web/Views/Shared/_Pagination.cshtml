@@ -1,0 +1,13 @@
+﻿@model PagerModel
+           
+<section class="pagination">
+    <span class="pages">Page @Model.CurrentPage of @Model.TotalPages</span>
+    @if (!string.IsNullOrEmpty(Model.PreviousPageUrl))
+    {
+        <a href="@Model.PreviousPageUrl" class="button prev">&lt; Previous Page</a>
+    }
+    @if (!string.IsNullOrEmpty(Model.NextPageUrl))
+    {
+        <a href="@Model.NextPageUrl" class="button next">Next Page &gt;</a>
+    }
+</section>

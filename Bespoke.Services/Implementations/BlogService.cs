@@ -11,6 +11,7 @@ using Bespoke.Infrastructure.Caching;
 using Bespoke.Infrastructure.Configuration;
 using Bespoke.Models.Blog;
 using Bespoke.Services.Contracts;
+using Bespoke.Services.Messages.Blog;
 using Bespoke.Services.Messages.Blog.Wordpress;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -51,52 +52,44 @@ namespace Bespoke.Services
 
             var url = string.Concat(_blogBaseUrl, permalink, "?json=1");
 
-            var response = _cacheStorage.Retrieve("BlogService." + permalink, () => RequestData<GetPostResponse>(url));
+            var response = _cacheStorage.Retrieve(permalink, () => RequestData<GetPostResponse>(url));
 
             return response.Post;
         }
 
-        public IEnumerable<Post> GetPostsByCategory(string slug)
+        public GetPostsByCategoryResponse GetPostsByCategory(string slug, int pageNumber = 1)
         {
-            var url = string.Concat(_blogBaseUrl, "api/get_category_posts/?slug=", slug);
+            var url = string.Concat(_blogBaseUrl, "api/get_category_posts/?slug=", slug, "&page=", pageNumber);
 
-            var response = RequestData<GetPostsByCategory>(url);
-
-            return response.Posts;
+            return GetPosts(pageNumber, () => RequestData<GetPostsByCategoryResponse>(url));
         }
 
-        public IEnumerable<Post> GetPostsByTag(string slug)
+        public GetPostsByTagResponse GetPostsByTag(string slug, int pageNumber = 1)
         {
-            var url = string.Concat(_blogBaseUrl, "api/get_tag_posts/?slug=", slug);
+            var url = string.Concat(_blogBaseUrl, "api/get_tag_posts/?slug=", slug, "&page=", pageNumber);
 
-            var response = RequestData<GetPostsByTag>(url);
-
-            return response.Posts;
+            return GetPosts(pageNumber, () => RequestData<GetPostsByTagResponse>(url));
         }
 
-        public IEnumerable<Post> GetPostsByAuthor(string slug)
+        public GetPostsByAuthor GetPostsByAuthor(string slug, int pageNumber = 1)
         {
-            var url = string.Concat(_blogBaseUrl, "api/get_author_posts/?author_slug=", slug);
+            var url = string.Concat(_blogBaseUrl, "api/get_author_posts/?author_slug=", slug, "&page=", pageNumber);
 
-            var response = RequestData<GetPostsResponse>(url);
-
-            return response.Posts;
+            return GetPosts(pageNumber, () => RequestData<GetPostsByAuthor>(url));
         }
 
-        public IEnumerable<Post> GetRecentPosts()
+        public GetPostsResponse GetRecentPosts(int pageNumber = 1)
         {
-            var url = string.Concat(_blogBaseUrl, "api/get_recent_posts");
+            var url = string.Concat(_blogBaseUrl, "api/get_recent_posts/?page=", pageNumber);
 
-            var response = _cacheStorage.Retrieve("BlogService.RecentPosts", () => RequestData<GetPostsResponse>(url));
-
-            return response.Posts;
+            return _cacheStorage.Retrieve(url, () => GetPosts(pageNumber, () => RequestData<GetPostsResponse>(url)));
         }
 
         public IEnumerable<Archive> GetPostArchiveTree()
         {
             var url = string.Concat(_blogBaseUrl, "api/get_date_index");
 
-            var response = _cacheStorage.Retrieve("BlogService.PostArchiveTree", () => RequestData<GetPostArchiveTreeResponse>(url));
+            var response = _cacheStorage.Retrieve(url, () => RequestData<GetPostArchiveTreeResponse>(url));
 
             var list = new List<Archive>();
 
@@ -112,29 +105,25 @@ namespace Bespoke.Services
             return list.OrderByDescending(a => a.ArchiveDate);
         }
 
-        public IEnumerable<Post> GetPostsByArchive(int year, int month)
+        public GetPostsResponse GetPostsByArchive(int year, int month, int pageNumber = 1)
         {
-            var url = string.Format("{0}{1}/{2}?json=1", _blogBaseUrl, year, month);
+            var url = string.Format("{0}{1}/{2}?json=1&page={3}", _blogBaseUrl, year, month, pageNumber);
 
-            var response = RequestData<GetPostsResponse>(url);
-
-            return response.Posts;
+            return GetPosts(pageNumber, () => RequestData<GetPostsResponse>(url));
         }
 
-        public IEnumerable<Post> SearchPosts(string searchText)
+        public GetPostsResponse SearchPosts(string searchText, int pageNumber = 1)
         {
-            var url = string.Concat(_blogBaseUrl, "api/get_search_results/?search=", searchText);
+            var url = string.Concat(_blogBaseUrl, "api/get_search_results/?search=", searchText, "&page=", pageNumber);
 
-            var response = RequestData<GetPostsResponse>(url);
-
-            return response.Posts;
+            return GetPosts(pageNumber, () => RequestData<GetPostsResponse>(url));
         }
 
         public IEnumerable<Category> GetCategories()
         {
             var url = string.Concat(_blogBaseUrl, "api/get_category_index");
 
-            var response = _cacheStorage.Retrieve("BlogService.Categories", () => RequestData<GetCategoriesResponse>(url));
+            var response = _cacheStorage.Retrieve(url, () => RequestData<GetCategoriesResponse>(url));
 
             return response.Categories;
         }
@@ -143,7 +132,7 @@ namespace Bespoke.Services
         {
             var url = string.Concat(_blogBaseUrl, "api/get_tag_index");
 
-            var response = _cacheStorage.Retrieve("BlogService.Tags", () => RequestData<GetTagsResponse>(url));
+            var response = _cacheStorage.Retrieve(url, () => RequestData<GetTagsResponse>(url));
 
             return response.Tags;
         }
@@ -186,6 +175,15 @@ namespace Bespoke.Services
             }
 
             return json;
+        }
+
+        private static T GetPosts<T>(int pageNumber, Func<T> method) where T : GetPostsResponse
+        {
+            var response = method();
+
+            response.Page = pageNumber;
+
+            return response;
         }
 
         #endregion

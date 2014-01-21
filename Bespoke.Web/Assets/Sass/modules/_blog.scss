@@ -82,6 +82,11 @@
 
 	.post-detail .post-title {
 		font-size: 2.1rem;
+
+		a {
+			text-decoration: none;
+			cursor: default;
+		}
 	}
 }
 
@@ -242,47 +247,44 @@
 
 .pagination {
     position: relative;
-    width: 80%;
-    max-width: 700px;
-    margin: 10px auto;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.3rem;
-    color: #9EABB3;
-    text-align: center;
+    margin: 20px auto;
+    color: $gray10;
+	padding-top: 40px;
+    text-align: center;	
+	border-top: solid 1px $gray30;
+	@include clearfix();
+
+	.pages {
+		line-height: 35px;
+		display: none;
+
+		//&:before {
+		//	@include fontawesome();
+		//	content: "\f15c";
+		//	margin-right: 5px;
+		//}
+	}
+
+	.button {
+		width: 140px;
+		padding-right: 15px;
+		padding-left: 15px;
+		position: absolute;
+
+		&.next {
+			right: 0;
+		}
+
+		&.prev {
+			left: 0;
+		}
+	}
 }
 
-.pagination a {
-    color: #9EABB3;
-}
-
-/* Push the previous/next links out to the left/right */
-.older-posts,
-.newer-posts {
-    position: absolute;
-    display: inline-block;
-    padding: 0 15px;
-    border: #EBF2F6 2px solid;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: border ease 0.3s;
-}
-
-.older-posts {
-    right: 0;
-}
-
-.page-number {
-    display: inline-block;
-    padding: 2px 0;
-}
-
-.newer-posts {
-    left: 0;
-}
-
-.older-posts:hover,
-.newer-posts:hover {
-    border-color: #9EABB3;
+@media only screen and (min-width: 768px) {
+	.pagination .pages {
+		display: inline-block;
+	}
 }
 
 .blog-header {
@@ -375,5 +377,34 @@
 		//font-weight: 300;
 		font-style: italic;
 		font-size: .9em;
+	}
+}
+
+/*
+	Blog Posts on Home page
+*/
+.home {
+
+	.post {
+		margin: 0 5px;
+		padding-bottom: 10px;
+	}
+
+	.post-title {
+		font-size: 1.5rem;
+	}
+
+	.post-meta {
+		font-size: 14px;
+		margin-top: 3px;
+	}
+
+	.post-excerpt p {
+		font-size: 16px;
+	}
+
+	.post-category {
+		font-size: .8em;
+		line-height: 1.2em;
 	}
 }

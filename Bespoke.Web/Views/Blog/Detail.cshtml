@@ -19,16 +19,12 @@
     <div class="large-8 columns">
         <div class="panel post-detail">
             
-            @*@if (!string.IsNullOrEmpty(Model.FeaturedImageUrl))
+            @if (!string.IsNullOrEmpty(Model.FeaturedImageUrl))
             {
                 <div class="post-featured-image">
                     <img src="@Model.FeaturedImageUrl" alt="@Model.Post.Title" />
                 </div>
-            }*@
-            
-            <div class="post-featured-image">
-                <img src="@Url.Content("~/Assets/Images/blog-pic.jpg")" alt="Blog Picture" />
-            </div>
+            }
             
             @Html.Partial("_BlogHeader", Model)
             

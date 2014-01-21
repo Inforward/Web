@@ -44,14 +44,15 @@
   <ItemGroup>
     <Compile Include="Contracts\IBlogService.cs" />
     <Compile Include="Implementations\BlogService.cs" />
-    <Compile Include="Messages\Blog\Wordpress\BaseResponse.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetCategoriesResponse.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetPostArchiveTreeResponse.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetPostResponse.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetPostsByCategory.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetPostsByTag.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetPostsResponse.cs" />
-    <Compile Include="Messages\Blog\Wordpress\GetTagsResponse.cs" />
+    <Compile Include="Messages\Blog\BaseResponse.cs" />
+    <Compile Include="Messages\Blog\GetCategoriesResponse.cs" />
+    <Compile Include="Messages\Blog\GetPostArchiveTreeResponse.cs" />
+    <Compile Include="Messages\Blog\GetPostResponse.cs" />
+    <Compile Include="Messages\Blog\GetPostsByAuthor.cs" />
+    <Compile Include="Messages\Blog\GetPostsByCategoryResponse.cs" />
+    <Compile Include="Messages\Blog\GetPostsByTagResponse.cs" />
+    <Compile Include="Messages\Blog\GetPostsResponse.cs" />
+    <Compile Include="Messages\Blog\GetTagsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

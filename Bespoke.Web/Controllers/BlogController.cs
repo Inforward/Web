@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using Bespoke.Infrastructure.Extensions;
 using Bespoke.Models.Blog;
 using Bespoke.Services.Contracts;
-using Bespoke.Web.Helpers;
-using Bespoke.Web.Models;
+using Bespoke.Services.Messages.Blog;
 using Bespoke.Web.Models.Blog;
-using Bespoke.Web.Helpers;
+using Microsoft.Ajax.Utilities;
 
 namespace Bespoke.Web.Controllers
 {
@@ -34,12 +30,13 @@ namespace Bespoke.Web.Controllers
 
         #region Actions
 
-        public ActionResult Index()
+        [Route]
+        [Route("page/{id?}")]
+        public ActionResult Index(int? id)
         {
-            var viewModel = new BlogViewModel()
-                {
-                    Posts = _blogService.GetRecentPosts().Select(ToPostViewModel).ToList()
-                };
+            var response = _blogService.GetRecentPosts(id ?? 1);
+
+            var viewModel = GetBlogViewModel(response, Url.Action("Index"));
 
             return View(viewModel);
         }
@@ -48,24 +45,24 @@ namespace Bespoke.Web.Controllers
         [Route("author/{slug}/page/{id?}")]
         public ActionResult Author(string slug, int? id)
         {
-            var viewModel = new BlogViewModel()
-            {
-                Posts = _blogService.GetPostsByAuthor(slug).Select(ToPostViewModel).ToList()
-            };
+            var response = _blogService.GetPostsByAuthor(slug, id ?? 1);
+
+            var viewModel = GetBlogViewModel(response, Url.Action("Author", new { slug }));
+
+            viewModel.Filter = "ALL POSTS BY: " + response.Author.Name;
 
             return View("Posts", viewModel);
         }
 
         [Route("{year:int}/{month:int}")]
-        public ActionResult Archive(int year, int month)
+        [Route("{year:int}/{month:int}/page/{id?}")]
+        public ActionResult Archive(int year, int month, int? id)
         {
-            var posts = _blogService.GetPostsByArchive(year, month).Select(ToPostViewModel).ToList();
+            var response = _blogService.GetPostsByArchive(year, month, id ?? 1);
 
-            var viewModel = new BlogViewModel()
-                {
-                    Posts = posts,
-                    Filter = string.Format("MONTHLY ARCHIVES: {0:MMMM yyyy}", new DateTime(year, month, 1))
-                };
+            var viewModel = GetBlogViewModel(response, Url.Action("Archive", new { year, month }));
+
+            viewModel.Filter = string.Format("MONTHLY ARCHIVES: {0:MMMM yyyy}", new DateTime(year, month, 1));
 
             return View("Posts", viewModel);
         }
@@ -83,14 +80,11 @@ namespace Bespoke.Web.Controllers
         [Route("category/{slug}/page/{id?}")]
         public ActionResult Category(string slug, int? id)
         {
-            var posts = _blogService.GetPostsByCategory(slug).Select(ToPostViewModel).ToList();
+            var response = _blogService.GetPostsByCategory(slug, id ?? 1);
 
-            var viewModel = new BlogViewModel()
-                {
-                    Posts = posts,
-                    Filter = string.Format("CATEGORY: {0}", slug), // TODO: Category Title
-                    PageTitle = slug // TODO: Category Title
-                };
+            var viewModel = GetBlogViewModel(response, Url.Action("Category", new { slug }));
+
+            viewModel.Filter = string.Format("CATEGORY: {0}", response.Category.Title);
 
             return View("Posts", viewModel);
         }
@@ -99,41 +93,40 @@ namespace Bespoke.Web.Controllers
         [Route("tag/{slug}/page/{id?}")]
         public ActionResult Tag(string slug, int? id)
         {
-            var posts = _blogService.GetPostsByTag(slug).Select(ToPostViewModel).ToList();
+            var response = _blogService.GetPostsByTag(slug, id ?? 1);
 
-            var viewModel = new BlogViewModel()
-                {
-                    Posts = posts,
-                    Filter = string.Format("TAG: {0}", slug), // TODO: Tag Title
-                    PageTitle = slug // TODO: Tag Title
-                };
+            var viewModel = GetBlogViewModel(response, Url.Action("Tag", new { slug }));
+
+            viewModel.Filter = string.Format("TAG: {0}", response.Tag.Title);
 
             return View("Posts", viewModel);
         }
 
         [Route("search")]
-        public ActionResult Search(string s)
+        [Route("search/page/{id?}")]
+        public ActionResult Search(string s, int? id = 1)
         {
-            var viewModel = new BlogViewModel()
-                {
-                    Filter = string.Format("Search Results for: {0}", s)
-                };
-
-            var posts = _blogService.SearchPosts(s).Select(ToPostViewModel).ToList();
+            var viewModel = new BlogViewModel();
 
             if (!string.IsNullOrWhiteSpace(s))
             {
-                viewModel.Posts = posts;
+                var response = _blogService.SearchPosts(s, id ?? 1);
+
+                viewModel = GetBlogViewModel(response, Url.Action("Search", new { s }));
             }
+
+            viewModel.Filter = string.Format("Search Results for: {0}", s);
 
             return View("Posts", viewModel);
         }
 
         public PartialViewResult Sidebar()
         {
+            var response = _blogService.GetRecentPosts();
+
             var viewModel = new BlogViewModel()
                 {
-                    Posts = _blogService.GetRecentPosts().Select(ToPostViewModel).ToList(),
+                    Posts = response.Posts.Take(5).Select(ToPostViewModel).ToList(),
                     Archives = _blogService.GetPostArchiveTree().Select(ToArchiveViewModel).ToList(),
                     Tags = GetTagCloud()
                 };
@@ -224,6 +217,28 @@ namespace Bespoke.Web.Controllers
             }
 
             return list;
+        }
+
+        private BlogViewModel GetBlogViewModel(GetPostsResponse response, string baseUrl)
+        {
+            var viewModel = new BlogViewModel()
+            {
+                Posts = response.Posts.Select(ToPostViewModel).ToList(),
+                CurrentPage = response.Page,
+                TotalPages = response.Pages
+            };
+
+            if (viewModel.CurrentPage > 1)
+            {
+                viewModel.PreviousPageUrl = string.Format("{0}/page/{1}", baseUrl, viewModel.CurrentPage - 1);
+            }
+
+            if (viewModel.CurrentPage < viewModel.TotalPages)
+            {
+                viewModel.NextPageUrl = string.Format("{0}/page/{1}", baseUrl, viewModel.CurrentPage + 1);
+            }
+
+            return viewModel;
         }
 
         #endregion
