@@ -8,6 +8,7 @@ using System.Web.Routing;
 using Bespoke.Infrastructure.Configuration;
 using Bespoke.Infrastructure.Extensions;
 using Bespoke.Web.Models;
+using Newtonsoft.Json;
 
 namespace Bespoke.Web.Helpers
 {
@@ -42,7 +43,7 @@ namespace Bespoke.Web.Helpers
             return string.Format("{0} {1}", routeValues["controller"], routeValues["action"]).ToLower();
         }
 
-        public static MvcHtmlString RenderTags(this HtmlHelper helper, List<TagModel> tags)
+        public static HtmlString RenderTags(this HtmlHelper helper, List<TagModel> tags)
         {
             if (tags.IsNullOrEmpty()) return MvcHtmlString.Empty;
 
@@ -53,7 +54,19 @@ namespace Bespoke.Web.Helpers
                 sb.AppendLine(tag.ToString());
             }
 
-            return new MvcHtmlString(sb.ToString());
+            return new HtmlString(sb.ToString());
+        }
+
+        public static HtmlString ToHtmlJson(this object obj)
+        {
+            return new HtmlString(JsonConvert.SerializeObject(obj));
+        }
+
+        public static HtmlString Base64Encode(this HtmlHelper helper, string stringToEncode)
+        {
+            var plainTextBytes = Encoding.UTF8.GetBytes(stringToEncode);
+
+            return new HtmlString(Convert.ToBase64String(plainTextBytes));
         }
     }
 }

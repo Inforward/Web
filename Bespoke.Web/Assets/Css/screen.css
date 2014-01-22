@@ -877,6 +877,11 @@ a:hover {
           .sidebar section ul li a:hover {
             text-decoration: none; }
 
+body .m-header {
+  background: #84cdc1; }
+body .m-search input[type='text'] {
+  margin: 0; }
+
 .slides {
   background: white;
   overflow: hidden;

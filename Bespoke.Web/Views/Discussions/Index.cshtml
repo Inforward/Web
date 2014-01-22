@@ -1,4 +1,4 @@
-﻿
+﻿@model MootConfigModel
 @{
     ViewBag.Title = Html.PageTitle("Discussions");
     Layout = "~/Views/Layouts/_Default.cshtml";
@@ -20,9 +20,27 @@
 </section>
 
 <section>
-    <a class="moot" href="https://moot.it/i/bespokemommy">bespokemommy forums</a>
+    <a id="moot"
+       href="https://moot.it/i/bespokemommy"
+       data-login_url="@Url.RouteUrl("Signup")">bespokemommy forums</a>
 </section>
 
 @section scripts {
     <script src="//cdn.moot.it/1/moot.min.js"></script>
+    
+    <script>
+        
+        (function($) {
+            $(function() {
+                $("#moot").moot({
+                    api: {
+                        key: '@Model.ApiKey',
+                        signature: '@Model.Signature',
+                        message: '@Model.Message',
+                        timestamp: @Model.Timestamp
+                    }
+                });
+            });
+        })(jQuery);
+    </script>
 }
