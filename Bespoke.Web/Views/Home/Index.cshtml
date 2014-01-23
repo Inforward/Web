@@ -8,7 +8,7 @@
     @Styles.Render("~/bundles/css/home")
 }
 
-<section class="slides iosSlider">
+<section class="slides" data-role="slider">
     <ul>
         @for (var i = 0; i < 2; i++)
         {
@@ -48,7 +48,7 @@
     </header>
     <div class="columns">
         <div class="panel">
-            <div id="latests-posts">                
+            <div data-role="showbiz">                
                 <div class="showbiz" data-left="#showbiz-left" data-right="#showbiz-right" data-play="#showbiz-play">
                     <div class="overflowholder">
                         <ul>
@@ -87,8 +87,21 @@
 
     <script>
         (function($) {
-            $(function() {
-                $('#latests-posts').showbizpro({
+            $(function () {
+                
+                $("[data-role='slider']").iosSlider({
+                    snapToChildren: true,
+                    desktopClickDrag: true,
+                    infiniteSlider: true,
+                    snapSlideCenter: true,
+                    navNextSelector: '.next',
+                    navPrevSelector: '.prev',
+                    autoSlide: true,
+                    autoSlideTimer: 5000,
+                    autoSlideHoverPause: true
+                });
+                
+                $("[data-role='showbiz']").showbizpro({
                     dragAndScroll: "off",
                     carousel: "off",
                     allEntryAtOnce: "off",
@@ -100,7 +113,7 @@
                     rewindFromEnd: "off",
                     autoPlay: "on",
                     delay: "5000",
-                    speed: "300"                });
+                    speed: "300"                });
             });
         })(jQuery);
     </script>

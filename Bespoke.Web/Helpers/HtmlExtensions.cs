@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using Bespoke.Infrastructure.Configuration;
 using Bespoke.Infrastructure.Extensions;
 using Bespoke.Web.Models;
@@ -26,7 +25,7 @@ namespace Bespoke.Web.Helpers
 
         public static string PageTitle(this HtmlHelper helper, params string[] titleParts)
         {
-            var title = SettingsHelper.Get<string>("Site.Title");
+            var title = SettingsHelper.Get<string>("Site.Name");
 
             if (titleParts != null && titleParts.Length > 0)
             {

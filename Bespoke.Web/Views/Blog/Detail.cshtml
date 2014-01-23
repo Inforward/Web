@@ -28,7 +28,7 @@
             
             @Html.Partial("_BlogHeader", Model)
             
-            <section class="article-share"></section>
+            <section data-role="articleshare" data-url="@Request.Url" data-title="@Model.Post.Title" class="article-share"></section>
 
             <section class="post-content">
                 @Html.Raw(Model.Post.Content)
@@ -37,8 +37,8 @@
             <footer class="post-footer">
                 @if (Model.Tags.Any())
                 {
-                    <section class="article-share"></section>
-                    
+                    <section data-role="articleshare" data-url="@Request.Url" data-title="@Model.Post.Title" class="article-share"></section>
+
                     <section class="post-tags">
                         <i class="fa @tagIconClass"></i> @tag.Pluralize(Model.Tags.Count): @Html.Raw(string.Join("", Model.Tags.Select(t => string.Format("<a href='{0}' rel='tag'>{1}</a>", t.Url, t.Text))))
                     </section>
@@ -50,14 +50,3 @@
         @{ Html.RenderAction("Sidebar", "Blog");}
     </div>
 </section>
-
-@section scripts {
-    <script>
-        $(function() {
-            $(".article-share").articleShare({
-                url: '@Request.Url',
-                title: '@Model.Post.Title'
-            });
-        });
-    </script>
-}

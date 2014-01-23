@@ -59,6 +59,10 @@
     a {
         font: inherit;
         color: $mommy-orange;
+
+		&:hover {
+			text-decoration: underline;
+		}
     }
 }
 

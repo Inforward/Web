@@ -61,6 +61,7 @@ $global-radius:	3px !default;
 @mixin radius($radius:$global-radius) {
   border-radius: $radius;
   -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
 }
 
 @mixin hover-trans($color, $hover-color) {

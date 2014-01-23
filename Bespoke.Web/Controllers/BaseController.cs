@@ -38,6 +38,8 @@ namespace Bespoke.Web.Controllers
 
             AddMetaPropertyTag("fb:app_id", SettingsHelper.Get<string>("Facebook.AppID"));
             AddMetaPropertyTag("og:site_name", siteName);
+
+            ViewBag.SiteName = siteName;
         }
 
         #endregion

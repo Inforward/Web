@@ -1,34 +1,38 @@
 ﻿
-(function ($) {
+(function (app, global, $) {
 
-    $(function () {
-        var $sliders = $(".iosSlider");
+    function require(service) {
 
-        $(document).foundation();
+        if (service in global)
+            return global[service];
 
-        if ($sliders.length) {
-            $sliders.iosSlider({
-                snapToChildren: true,
-                desktopClickDrag: true,
-                infiniteSlider: true,
-                snapSlideCenter: true,
-                navNextSelector: '.next',
-                navPrevSelector: '.prev',
-                autoSlide: true,
-                autoSlideTimer: 5000,
-                autoSlideHoverPause: true
-            });
+        if (service in app) {
+            if (typeof app[service] === 'function') {
+                app[service] = app[service](require);
+            }
+            return app[service];
         }
 
-        $("#header").header();
+        throw new Error('unable to locate ' + service);
+    }
 
-        $("select[data-role='jump-menu']").on("change", function() {
-            var val = $(this).find("option:selected").val();
+    $(function () {
+        var registration,
+            module;
 
-            if (val && val.length)
-                document.location = val;
-        });
+        // Bootstrap all modules
+        for (registration in app) {
+
+            module = app[registration];
+
+            if (typeof module === 'function') {
+                app[registration] = module(require);
+            }
+        }
+
+        // Perform any post-boostrap (global) initialization
+        $(document).foundation();
 
     });
 
-})(jQuery);
+})(window.bespoke = window.bespoke || {}, window, jQuery);

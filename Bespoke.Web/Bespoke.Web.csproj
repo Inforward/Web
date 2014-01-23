@@ -218,6 +218,7 @@
     <Content Include="Assets\Images\promo-banner-blog.jpg" />
     <Content Include="Assets\Images\promo-banner-discuss.jpg" />
     <Content Include="Assets\Images\sharrre-icons.png" />
+    <Content Include="Assets\Images\signin-or.png" />
     <Content Include="Assets\Images\slider-blog.jpg" />
     <Content Include="Assets\Images\slider-connect.jpg" />
     <Content Include="Assets\Images\slider-fade-left.png" />
@@ -225,7 +226,12 @@
     <Content Include="Assets\Images\slider-forum.jpg" />
     <Content Include="Assets\Scripts\app.js" />
     <Content Include="Assets\Scripts\article-share.js" />
+    <Content Include="Assets\Scripts\auth-service.js" />
+    <Content Include="Assets\Scripts\events.js" />
     <Content Include="Assets\Scripts\header.js" />
+    <Content Include="Assets\Scripts\jump-menu.js" />
+    <Content Include="Assets\Scripts\pubsub.js" />
+    <Content Include="Assets\Scripts\scroll-manager.js" />
     <Content Include="Assets\Vendor\custom.modernizr.min.js" />
     <Content Include="Assets\Vendor\Foundation\foundation.abide.js" />
     <Content Include="Assets\Vendor\Foundation\foundation.accordion.js" />
@@ -474,11 +480,12 @@
       <DebugInfo>False</DebugInfo>
     </Content>
     <Content Include="Assets\Sass\modules\_moot.scss" />
+    <Content Include="Assets\Sass\modules\_signin.scss" />
     <None Include="Properties\PublishProfiles\bespokemommy-test.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\Discussions\Index.cshtml" />
     <Content Include="Views\Shared\_Pagination.cshtml" />
-    <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Account\Signin.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

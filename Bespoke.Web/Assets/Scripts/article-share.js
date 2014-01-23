@@ -1,34 +1,38 @@
 ﻿
-(function ($, bespoke) {
+(function (bespoke) {
 
-    $.widget("bespoke.articleShare", {
-        options: {
-            url: null,
-            title: null
-        },
+    bespoke.articleShare = function (require) {
 
-        _create: function () {
+        var $ = require('$'),
+            $elements = $("[data-role='articleshare']");
 
-            var that = this;
-            var template = '<div class="box">' +
-                             '<div class="sharebuttons">' +
-                                 '<a href="#" class="facebook"></a>' +
-                                 '<a href="#" class="twitter"></a>' +
-                                 '<a href="#" class="googleplus"></a>' +
-                                 '<a href="#" class="linkedin"></a>' +
-                                 '<a href="#" class="mail"></a>' +
-                             '</div>' +
-                             '<div class="sharecount">{total} SHARES</div>' +
-                            '</div>';
-            
-            this.element.sharrre({
+        if (!$elements.length)
+            return;
+        
+        var template = '<div class="box">' +
+                            '<div class="sharebuttons">' +
+                                '<a href="#" class="facebook"></a>' +
+                                '<a href="#" class="twitter"></a>' +
+                                '<a href="#" class="googleplus"></a>' +
+                                '<a href="#" class="linkedin"></a>' +
+                                '<a href="#" class="mail"></a>' +
+                            '</div>' +
+                            '<div class="sharecount">{total} SHARES</div>' +
+                        '</div>';
+
+        $elements.each(function (idx, element) {
+            var $this = $(element),
+                url = $this.data("url"),
+                title = $this.data("title");
+
+            $this.sharrre({
                 share: {
                     twitter: true,
                     facebook: true,
                     googlePlus: true,
                     linkedin: true
                 },
-                url: this.options.url,
+                url: url,
                 template: template,
                 enableHover: false,
                 enableTracking: true,
@@ -47,12 +51,12 @@
                         api.openPopup('linkedin');
                     });
                     $(api.element).on('click', '.mail', function () {
-                        document.location.href = 'mailto:?subject=' + encodeURIComponent(that.options.title) + '&body=' + encodeURIComponent(that.options.url);
+                        document.location.href = 'mailto:?subject=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(url);
                     });
                 }
             });
-        }
-    });
+        });
+    };
 
-})(jQuery, this.bespoke = this.bespoke || {});
+}(window.bespoke = window.bespoke || {}));
 

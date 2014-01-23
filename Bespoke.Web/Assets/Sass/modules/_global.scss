@@ -20,8 +20,12 @@ select {
 	font-family: Arial, Tahoma;
 }
 
-a:hover {
-	text-decoration: underline;
+a {
+	@include hover-trans($teal20, $gray10);
+
+	&:hover {
+		//text-decoration: underline;
+	}
 }
 
 

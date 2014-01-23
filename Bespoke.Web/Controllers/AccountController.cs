@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Bespoke.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-        [Route("~/signup", Name = "Signup")]
-        public ActionResult Signup()
+        [Route("~/signin", Name = "Signin")]
+        public ActionResult Signin()
         {
             return View();
         }

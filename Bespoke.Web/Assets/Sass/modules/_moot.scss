@@ -1,4 +1,7 @@
-body{
+/*
+	Css overrides for Moot Forums
+*/
+body {
 
 	.m-header {
 		background: $teal10;
@@ -10,4 +13,16 @@ body{
 		}
 	}
 
+	.m-seed {
+		padding: 1.2em 1.8em 0;
+	}
+
+	.m-moot, 
+	.m-sidebar {
+		border-radius: 7px;
+	}
+
+	.md-sidebar-shad .m-sidebar {
+		box-shadow: 0 0 .6em rgba(0,0,0,0.35);
+	}
 }
