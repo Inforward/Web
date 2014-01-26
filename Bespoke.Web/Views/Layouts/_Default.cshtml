@@ -40,7 +40,7 @@
                     <li><a href="@Url.Action("Index", "Home")">Bespoke Mommy | HOME</a></li>
                     <li><a class="orange" href="@Url.Action("Index", "Blog")">BLOG</a></li>
                     <li><a class="orange" href="@Url.Action("Index", "Discussions")">DISCUSSIONS</a></li>
-                    <li><a href="@Url.RouteUrl("Signin")">REGISTER or SIGN IN</a></li>
+                    <li><a href="@Url.RouteUrl("Login")">REGISTER or SIGN IN</a></li>
                     <li>
                         @Html.Partial("_Social")
                     </li>
@@ -66,6 +66,9 @@
     @Scripts.Render("~/bundles/vendor")
     @Scripts.Render("~/bundles/scripts")
     @RenderSection("scripts", required: false)
+    
+    @*helper for partial views*@
+    @Html.PageScripts()
 
     @if (!HttpContext.Current.IsDebuggingEnabled)
     {

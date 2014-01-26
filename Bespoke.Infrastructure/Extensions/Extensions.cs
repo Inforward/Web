@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net.Mail;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bespoke.Infrastructure.Extensions
 {
@@ -25,8 +22,22 @@ namespace Bespoke.Infrastructure.Extensions
                 binaryFormatter.Serialize(ms, source);
                 ms.Seek(0, SeekOrigin.Begin);
 
-                return (T)binaryFormatter.Deserialize(ms);
+                return (T) binaryFormatter.Deserialize(ms);
             }
+        }
+
+        public static byte[] GetBytes(this string input)
+        {
+            var bytes = new byte[input.Length*sizeof (char)];
+            Buffer.BlockCopy(input.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
+
+        public static string GetString(this byte[] bytes)
+        {
+            var chars = new char[bytes.Length/sizeof (char)];
+            Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
+            return new string(chars);
         }
     }
 }

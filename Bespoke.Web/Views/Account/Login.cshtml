@@ -1,0 +1,74 @@
+﻿@model LoginModel
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Layouts/_Default.cshtml";
+}
+
+<div id="signin-wrap">
+    
+    <section id="signin-form">
+        <div class="row">
+            <h2 class="columns">Sign In to @ViewBag.SiteName</h2>    
+        </div>
+        <div class="row">
+            <div class="large-5 medium-5 columns">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "login-form" }))
+                {
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                    @Html.LabelFor(m => m.Password)
+                    @Html.TextBoxFor(m => m.Password)
+                    @Html.CheckBoxFor(m => m.PersistLogin)@Html.LabelFor(m=> m.PersistLogin, "Keep me signed in")
+                    <input type="submit" value="Sign In" class="button" />
+                    <a class="forgot" href="#">Forgot your username or password?</a>
+                }
+            </div>
+            <div class="signin-center-col">
+                <div></div>
+                <img src="@Url.Content("~/Assets/Images/signin-or.png")" alt="Or">
+            </div>
+            <div class="large-5 medium-5 columns">
+                <a id="fb-login" class="social-login-btn fb">
+                    <i class="fa fa-facebook"></i><span>Sign In with Facebook</span>
+                </a>
+                <a id="gplus-login" class="social-login-btn gplus">
+                    <i class="fa fa-google-plus"></i><span>Sign In with Google</span>
+                </a>
+                <a id="email-signup" class="social-login-btn email">
+                    <i class="fa fa-envelope"></i><span>Sign Up with Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div id="signup-form" style="display: none;">
+        <h2>Sign Up for Your Free Account!</h2>
+        <form>
+            <label>Email</label>
+            <input type="text" />
+            <label>Password</label>
+            <input type="password" />
+            <label>Confirm Password</label>
+            <input type="password" />
+            <input type="submit" value="Sign Up" />
+        </form>
+    </div>
+    <div id="reset-form">
+
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/scripts/form")
+    <script>
+
+        (function($) {
+            $(function() {
+                bespoke.login.init({
+                    fbAppId: '@ViewBag.FacebookAppId'
+                });
+            });
+        })(jQuery);
+        
+    </script>
+}

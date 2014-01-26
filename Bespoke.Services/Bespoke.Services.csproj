@@ -39,6 +39,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.4.2\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -51,20 +54,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IBlogService.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Implementations\BlogService.cs" />
-    <Compile Include="Messages\Blog\BaseResponse.cs" />
-    <Compile Include="Messages\Blog\GetCategoriesResponse.cs" />
-    <Compile Include="Messages\Blog\GetPostArchiveTreeResponse.cs" />
-    <Compile Include="Messages\Blog\GetPostResponse.cs" />
-    <Compile Include="Messages\Blog\GetPostsByAuthor.cs" />
-    <Compile Include="Messages\Blog\GetPostsByCategoryResponse.cs" />
-    <Compile Include="Messages\Blog\GetPostsByTagResponse.cs" />
-    <Compile Include="Messages\Blog\GetPostsResponse.cs" />
-    <Compile Include="Messages\Blog\GetTagsResponse.cs" />
+    <Compile Include="Messages\UserService\LoginRequest.cs" />
+    <Compile Include="Messages\UserService\LoginResponse.cs" />
+    <Compile Include="Messages\BaseResponse.cs" />
+    <Compile Include="Messages\BlogService\BaseResponse.cs" />
+    <Compile Include="Messages\BlogService\GetCategoriesResponse.cs" />
+    <Compile Include="Messages\BlogService\GetPostArchiveTreeResponse.cs" />
+    <Compile Include="Messages\BlogService\GetPostResponse.cs" />
+    <Compile Include="Messages\BlogService\GetPostsByAuthor.cs" />
+    <Compile Include="Messages\BlogService\GetPostsByCategoryResponse.cs" />
+    <Compile Include="Messages\BlogService\GetPostsByTagResponse.cs" />
+    <Compile Include="Messages\BlogService\GetPostsResponse.cs" />
+    <Compile Include="Messages\BlogService\GetTagsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bespoke.Data\Bespoke.Data.csproj">
+      <Project>{1ac15522-a5ed-4a5d-870e-eea4b0d810f1}</Project>
+      <Name>Bespoke.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Bespoke.Infrastructure\Bespoke.Infrastructure.csproj">
       <Project>{58e523bb-8791-4fd0-8779-c9945bc8f170}</Project>
       <Name>Bespoke.Infrastructure</Name>

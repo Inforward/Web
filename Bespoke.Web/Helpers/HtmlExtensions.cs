@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.WebPages;
 using Bespoke.Infrastructure.Configuration;
 using Bespoke.Infrastructure.Extensions;
 using Bespoke.Web.Models;
@@ -66,6 +68,44 @@ namespace Bespoke.Web.Helpers
             var plainTextBytes = Encoding.UTF8.GetBytes(stringToEncode);
 
             return new HtmlString(Convert.ToBase64String(plainTextBytes));
+        }
+
+        public static IDisposable BeginScripts(this HtmlHelper helper)
+        {
+            return new ScriptBlock((WebViewPage)helper.ViewDataContainer);
+        }
+
+        public static MvcHtmlString PageScripts(this HtmlHelper helper)
+        {
+            return MvcHtmlString.Create(string.Join(Environment.NewLine, ScriptBlock.pageScripts.Select(s => s.ToString())));
+        }
+
+        private class ScriptBlock : IDisposable
+        {
+            private readonly WebViewPage webPageBase;
+            private const string scriptsKey = "scripts";
+
+            public static List<string> pageScripts
+            {
+                get
+                {
+                    if (HttpContext.Current.Items[scriptsKey] == null)
+                        HttpContext.Current.Items[scriptsKey] = new List<string>();
+                    return (List<string>)HttpContext.Current.Items[scriptsKey];
+                }
+            }
+
+            public ScriptBlock(WebViewPage webPageBase)
+            {
+                this.webPageBase = webPageBase;
+                this.webPageBase.OutputStack.Push(new StringWriter());
+            }
+
+            public void Dispose()
+            {
+                var script = webPageBase.OutputStack.Pop();
+                pageScripts.Add(script.ToString());
+            }
         }
     }
 }

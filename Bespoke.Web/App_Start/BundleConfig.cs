@@ -16,14 +16,22 @@ namespace Bespoke.Web
         private static void RegisterScriptBundles(BundleCollection bundles)
         {
             // Application specific js bundle
-            bundles.Add(new ScriptBundle("~/bundles/scripts").IncludeDirectory("~/Assets/Scripts", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                "~/Assets/Scripts/events.js",
+                "~/Assets/Scripts/pubsub.js",
+                "~/Assets/Scripts/script-loader.js",
+                "~/Assets/Scripts/article-share.js",
+                "~/Assets/Scripts/facebook-provider.js",
+                "~/Assets/Scripts/login.js",
+                "~/Assets/Scripts/header.js",
+                "~/Assets/Scripts/jump-menu.js",
+                "~/Assets/Scripts/app.js"));
 
             // Vendor js bundle
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
                 "~/Assets/vendor/foundation/foundation.js",
                 "~/Assets/vendor/foundation/foundation.offcanvas.js",
                 "~/Assets/vendor/jquery.scroll-start-stop.js",
-                "~/Assets/vendor/jquery-ui-1.10.4.custom.js",
                 "~/Assets/vendor/jquery.sharrre.js"));
 
             // Header bundle
@@ -36,6 +44,11 @@ namespace Bespoke.Web
                 "~/Assets/vendor/jquery.iosslider.min.js",
                 "~/Assets/vendor/jquery.themepunch.plugins.min.js",
                 "~/Assets/vendor/jquery.themepunch.showbizpro.min.js"));
+
+            // Form bundle (for use on pages with forms)
+            bundles.Add(new ScriptBundle("~/bundles/scripts/form").Include(
+                "~/Assets/vendor/jquery.form.js"));
+
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)

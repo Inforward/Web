@@ -1,6 +1,10 @@
+using Bespoke.Data;
+using Bespoke.Data.Sql.Models;
+using Bespoke.Data.Sql.Repositories;
 using Bespoke.Infrastructure.Caching;
 using Bespoke.Services;
 using Bespoke.Services.Contracts;
+using Bespoke.Services.Implementations;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(Bespoke.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(Bespoke.Web.App_Start.NinjectWebCommon), "Stop")]
@@ -59,6 +63,11 @@ namespace Bespoke.Web.App_Start
         {
             // Bind Services
             kernel.Bind<IBlogService>().To<BlogService>();
+            kernel.Bind<IUserService>().To<UserService>();
+
+            // Bind Repositories
+            kernel.Bind<IUnitOfWork>().To<BespokeContext>();
+            kernel.Bind<IUserRepository>().To<UserRepository>();
 
             // Miscellaneous
             kernel.Bind<ICacheStorage>().To<HttpContextCacheStorage>();

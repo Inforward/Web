@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\FacebookUser.cs" />
     <Compile Include="Blog\Archive.cs" />
     <Compile Include="Blog\Attachment.cs" />
     <Compile Include="Blog\Author.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Blog\Post.cs" />
     <Compile Include="Blog\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

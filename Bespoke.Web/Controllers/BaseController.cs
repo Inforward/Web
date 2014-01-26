@@ -32,14 +32,16 @@ namespace Bespoke.Web.Controllers
             base.Initialize(requestContext);
 
             var siteName = SettingsHelper.Get<string>("Site.Name");
+            var facebookAppId = SettingsHelper.Get<string>("Facebook.AppID");
 
             AddMetaNameTag("author", siteName);
             AddMetaNameTag("application-name", siteName);
 
-            AddMetaPropertyTag("fb:app_id", SettingsHelper.Get<string>("Facebook.AppID"));
+            AddMetaPropertyTag("fb:app_id", facebookAppId);
             AddMetaPropertyTag("og:site_name", siteName);
 
             ViewBag.SiteName = siteName;
+            ViewBag.FacebookAppId = facebookAppId;
         }
 
         #endregion
@@ -59,6 +61,44 @@ namespace Bespoke.Web.Controllers
         protected void AddLinkTag(string key, string value)
         {
             Tags.Add(new TagModel() { Key = key, Value = value, TagType = TagType.Link });
+        }
+
+        protected JsonResponse JsonResponse(Action action)
+        {
+            var response = new JsonResponse();
+
+            try
+            {
+                action();
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+                // TODO: Log it!
+            }
+
+            return response;
+        }
+
+        protected JsonResponse JsonResponse<T>(Func<T> method)
+        {
+            var response = new JsonResponse();
+
+            try
+            {
+                response.Data = (T)method();
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+                // TODO: Log it!
+            }
+
+            return response;
         }
 
         #endregion

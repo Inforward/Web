@@ -6,20 +6,22 @@
         var $ = require('$'),
             $header = $("#header"),
             $clone = $header.clone(true),
-            pubsub = require('pubsub'),
-            events = require('events');
+            $window = $(window);
+
+        if (!$header.length)
+            return;
         
         $clone.addClass("clone").hide().appendTo("#body");
         
-        pubsub.subscribe(events.window.scroll, function (scrollTop) {
-
-            if (scrollTop < $header.height())
+        $window.on("scroll", function () {
+            
+            if ($window.scrollTop() < $header.height())
                 $clone.fadeOut("fast");
         });
 
-        pubsub.subscribe(events.window.scrollStop, function (scrollTop) {
+        $window.on("scrollstop", function () {
 
-            if (scrollTop < $header.height())
+            if ($window.scrollTop() < $header.height())
                 return;
 
             if (!$clone.is(":visible"))

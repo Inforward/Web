@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Bespoke.Infrastructure.Extensions;
 using Bespoke.Services.Contracts;
-using Bespoke.Web.Models;
+using Bespoke.Web.Models.Home;
 
 namespace Bespoke.Web.Controllers
 {
