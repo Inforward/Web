@@ -12,11 +12,11 @@ namespace Bespoke.Data.Sql.Mapping
 
             // Properties
             Property(t => t.Email).IsRequired().HasMaxLength(100);
-            Property(t => t.PasswordHash).HasMaxLength(256);
+            Property(t => t.PasswordHash).HasMaxLength(512);
             Property(t => t.PasswordSalt).HasMaxLength(256);
 
-            Property(t => t.FirstName).IsRequired().HasMaxLength(50);
-            Property(t => t.LastName).IsRequired().HasMaxLength(50);
+            Property(t => t.FirstName).HasMaxLength(50);
+            Property(t => t.LastName).HasMaxLength(50);
 
             // Table & Column Mappings
             ToTable("Users");

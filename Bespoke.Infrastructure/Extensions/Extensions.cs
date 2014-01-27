@@ -25,19 +25,5 @@ namespace Bespoke.Infrastructure.Extensions
                 return (T) binaryFormatter.Deserialize(ms);
             }
         }
-
-        public static byte[] GetBytes(this string input)
-        {
-            var bytes = new byte[input.Length*sizeof (char)];
-            Buffer.BlockCopy(input.ToCharArray(), 0, bytes, 0, bytes.Length);
-            return bytes;
-        }
-
-        public static string GetString(this byte[] bytes)
-        {
-            var chars = new char[bytes.Length/sizeof (char)];
-            Buffer.BlockCopy(bytes, 0, chars, 0, bytes.Length);
-            return new string(chars);
-        }
     }
 }

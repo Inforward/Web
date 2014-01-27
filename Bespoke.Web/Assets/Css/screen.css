@@ -82,6 +82,10 @@ a {
 .orange {
   color: #f38368 !important; }
 
+.fineprint {
+  font-size: 12px;
+  line-height: 16px; }
+
 /*
    Search Form Styles
 */
@@ -307,7 +311,7 @@ a {
             transform: translateY(5px); }
 
 .shop #nav-wrap nav li a.shop:after,
-.boards #nav-wrap nav li a.mommy-boards:after,
+.boards #nav-wrap nav li a.mommy-board:after,
 .blog #nav-wrap nav li a.blog:after,
 .discussions #nav-wrap nav li a.discuss:after {
   opacity: 0.8;
@@ -524,6 +528,65 @@ a {
 @media only screen and (min-width: 385px) {
   .article-share .sharecount {
     margin-left: 15px; } }
+.form-section {
+  margin-top: 30px;
+  font-size: 0.875rem;
+  color: #4d4d4d; }
+  .form-section h2 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #f38368;
+    margin-bottom: 30px; }
+  .form-section a.forgot {
+    font-size: .9em;
+    display: block;
+    margin-bottom: 20px; }
+
+@media only screen and (min-width: 400px) {
+  .form-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 40px; } }
+.section-seperator {
+  clear: both;
+  padding-bottom: 6px;
+  margin: 35px 0;
+  border-bottom: 1px solid #cccccc; }
+
+.checkbox-wrap {
+  *zoom: 1; }
+  .checkbox-wrap:before, .checkbox-wrap:after {
+    content: " ";
+    display: table; }
+  .checkbox-wrap:after {
+    clear: both; }
+  .checkbox-wrap input[type='checkbox'] {
+    float: left; }
+  .checkbox-wrap label {
+    float: left;
+    margin-left: 5px; }
+
+.submit-wrap {
+  margin-top: 30px !important; }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"], textarea {
+  margin: 0 0 1.2rem 0; }
+
+label {
+  font-size: 1rem; }
+
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
   position: relative;
@@ -1022,21 +1085,6 @@ body .md-sidebar-shad .m-sidebar {
     .social-login-btn.email span {
       border-left: solid 1px #adadad; }
 
-#signin-wrap {
-  margin-top: 30px; }
-  #signin-wrap h2 {
-    font-family: "Open Sans", sans-serif;
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: #f38368;
-    margin-bottom: 30px; }
-  #signin-wrap a.forgot {
-    font-size: .9em;
-    display: block;
-    margin-bottom: 20px; }
-  #signin-wrap input[type='submit'] {
-    margin: 15px 0 20px 0; }
-
 .signin-center-col {
   float: left;
   width: 41px;
@@ -1055,10 +1103,6 @@ body .md-sidebar-shad .m-sidebar {
     left: 0px;
     top: 30px; }
 
-@media only screen and (min-width: 400px) {
-  #signin-wrap h2 {
-    font-size: 1.5rem;
-    margin-bottom: 40px; } }
 @media only screen and (min-width: 750px) {
   .signin-center-col {
     display: block; } }

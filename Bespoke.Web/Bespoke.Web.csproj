@@ -506,6 +506,7 @@
     </Content>
     <Content Include="Assets\Sass\modules\_moot.scss" />
     <Content Include="Assets\Sass\modules\_signin.scss" />
+    <Content Include="Assets\Sass\modules\_forms.scss" />
     <None Include="Properties\PublishProfiles\bespokemommy-test.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <Content Include="Views\Discussions\Index.cshtml" />

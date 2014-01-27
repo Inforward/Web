@@ -5,12 +5,18 @@ using System.Web;
 using System.Web.Mvc;
 using Bespoke.Infrastructure.Configuration;
 using Bespoke.Web.Models;
+using Microsoft.Owin.Security;
 
 namespace Bespoke.Web.Controllers
 {
     public abstract class BaseController : Controller
     {
         #region Properties
+
+        protected IAuthenticationManager Authentication
+        {
+            get { return HttpContext.GetOwinContext().Authentication; }
+        }
 
         protected List<TagModel> Tags
         {

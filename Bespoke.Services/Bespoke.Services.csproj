@@ -57,8 +57,11 @@
     <Compile Include="Contracts\IUserService.cs" />
     <Compile Include="Contracts\IBlogService.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="Helpers\SaltedHash.cs" />
     <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Implementations\BlogService.cs" />
+    <Compile Include="Messages\UserService\CreateUserRequest.cs" />
+    <Compile Include="Messages\UserService\CreateUserResponse.cs" />
     <Compile Include="Messages\UserService\LoginRequest.cs" />
     <Compile Include="Messages\UserService\LoginResponse.cs" />
     <Compile Include="Messages\BaseResponse.cs" />

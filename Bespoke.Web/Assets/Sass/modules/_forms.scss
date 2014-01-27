@@ -1,0 +1,78 @@
+
+
+.form-section {
+	margin-top: 30px;
+	font-size: 0.875rem;
+	color: #4d4d4d;
+
+	h2 {
+		font-family: $default-font;
+		font-weight: 600;
+		font-size: rem-calc(18);
+		color: $mommy-orange;
+		margin-bottom: 30px;
+	}
+
+	a.forgot {
+		font-size: .9em;
+		display: block;
+		margin-bottom: 20px;
+	}
+
+	input[type='submit'] {
+		//margin: 15px 0 20px 0;
+	}	
+}
+
+@media only screen and (min-width: 400px) {
+	.form-section {
+		h2 {
+			font-size: rem-calc(24);
+			margin-bottom: 40px;
+		}
+	}
+}
+
+.section-seperator {
+	clear: both;
+	padding-bottom: 6px;
+	margin: 35px 0;
+	border-bottom: 1px solid $gray80;
+}
+
+.checkbox-wrap {
+	@include clearfix();
+
+	input[type='checkbox'] {
+		float: left;
+	}
+
+	label {
+		float: left;
+		margin-left: 5px;
+	}
+}
+
+.submit-wrap {
+	margin-top: 30px !important;
+}
+
+input[type="text"], 
+input[type="password"], 
+input[type="date"], 
+input[type="datetime"], 
+input[type="datetime-local"], 
+input[type="month"], 
+input[type="week"], 
+input[type="email"], 
+input[type="number"], 
+input[type="search"], 
+input[type="tel"], 
+input[type="time"], 
+input[type="url"], textarea {
+	margin: 0 0 1.2rem 0;
+}
+
+label {
+	font-size: 1rem;
+}

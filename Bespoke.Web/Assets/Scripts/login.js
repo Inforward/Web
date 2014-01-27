@@ -20,6 +20,13 @@
                     alert(response.Success);
                 }
             });
+            
+            $("#signup-form").ajaxForm({
+                dataType: 'json',
+                success: function (response) {
+                    alert(response.Success);
+                }
+            });
         }
         
         function facebookLogin() {

@@ -130,28 +130,6 @@
 	}
 }
 
-#signin-wrap {
-	margin-top: 30px;
-
-	h2 {
-		font-family: $default-font;
-		font-weight: 600;
-		font-size: rem-calc(18);
-		color: $mommy-orange;
-		margin-bottom: 30px;
-	}
-
-	a.forgot {
-		font-size: .9em;
-		display: block;
-		margin-bottom: 20px;
-	}
-
-	input[type='submit'] {
-		margin: 15px 0 20px 0;
-	}
-}
-
 .signin-center-col {
 	float: left;
 	width: 41px;
@@ -175,14 +153,7 @@
 	}
 }
 
-@media only screen and (min-width: 400px) {
-	#signin-wrap {
-		h2 {
-			font-size: rem-calc(24);
-			margin-bottom: 40px;
-		}
-	}
-}
+
 
 @media only screen and (min-width: 750px) {
 	.signin-center-col {

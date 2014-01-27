@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using Bespoke.Data;
 using Bespoke.Infrastructure.Extensions;
 using Bespoke.Models;
-using Bespoke.Models.Auth;
+using Bespoke.Services.Helpers;
 using Bespoke.Services.Contracts;
 using Bespoke.Services.Messages.UserService;
 using Facebook;
@@ -61,11 +61,52 @@ namespace Bespoke.Services.Implementations
             return response;
         }
 
+        public CreateUserResponse CreateUser(CreateUserRequest request)
+        {
+            var response = new CreateUserResponse();
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(request.Email))
+                    throw new ArgumentNullException("Email");
+
+                if (string.IsNullOrWhiteSpace(request.Password))
+                    throw new ArgumentNullException("Password");
+
+                var exists = _userRepository.GetByEmail(request.Email) != null;
+
+                if (exists)
+                    throw new ApplicationException("An account with this e-mail already exists");
+
+                var password = new SaltedHash(request.Password);
+
+                var user = new User()
+                    {
+                        Email = request.Email,
+                        PasswordHash = password.Hash,
+                        PasswordSalt = password.Salt,
+                        UserRegistrationMethod = UserRegistrationMethods.Email
+                    };
+
+                _userRepository.Create(user);
+
+                response.User = user;
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+
         private User LoginWithEmail(string email, string password)
         {
             var user = _userRepository.GetByEmail(email);
 
-            if (user == null || user.UserRegistrationMethod != UserRegistrationMethods.Email || !ValidatePassword(password, user.PasswordHash, user.PasswordSalt))
+            if (user == null || user.UserRegistrationMethod != UserRegistrationMethods.Email || !SaltedHash.Verify(user.PasswordSalt, user.PasswordHash, password))
                 throw new Exception("Invalid email address or password");
 
             return user;
@@ -106,34 +147,6 @@ namespace Bespoke.Services.Implementations
         private User LoginWithGoogle()
         {
             throw new Exception("Not implemented");
-        }
-
-        private void HashPassword(string password, out string salt, out string passwordHash)
-        {
-            using (var deriveBytes = new Rfc2898DeriveBytes(password, 20))
-            {
-                var saltBytes = deriveBytes.Salt;
-                var hashBytes = deriveBytes.GetBytes(20);
-
-                salt = saltBytes.GetString();
-                passwordHash = hashBytes.GetString();
-            }
-        }
-
-        private bool ValidatePassword(string password, string passwordHash, string saltHash)
-        {
-            var salt = saltHash.GetBytes();
-            var key = passwordHash.GetBytes();
-            bool isValid;
-
-            using (var deriveBytes = new Rfc2898DeriveBytes(password, salt))
-            {
-                var newKey = deriveBytes.GetBytes(20);
-
-                isValid = newKey.SequenceEqual(key);
-            }
-
-            return isValid;
         }
     }
 }
