@@ -13,6 +13,24 @@ namespace Bespoke.Models
         public string LastName { get; set; }
         public UserRegistrationMethods UserRegistrationMethod { get; set; }
         public long? FacebookUserId { get; set; }
+        public string Name
+        {
+            get
+            {
+                var name = string.Empty;
+
+                if (!string.IsNullOrEmpty(FirstName))
+                    name += FirstName;
+
+                if (!string.IsNullOrEmpty(LastName))
+                {
+                    if (name.Length > 0) name += " ";
+                    name += LastName;
+                }
+
+                return name;
+            }
+        }
     }
 
     public enum UserRegistrationMethods : byte

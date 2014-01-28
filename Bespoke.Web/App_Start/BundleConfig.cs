@@ -31,6 +31,7 @@ namespace Bespoke.Web
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
                 "~/Assets/vendor/foundation/foundation.js",
                 "~/Assets/vendor/foundation/foundation.offcanvas.js",
+                "~/Assets/vendor/foundation/foundation.reveal.js",
                 "~/Assets/vendor/jquery.scroll-start-stop.js",
                 "~/Assets/vendor/jquery.sharrre.js"));
 
@@ -47,6 +48,9 @@ namespace Bespoke.Web
 
             // Form bundle (for use on pages with forms)
             bundles.Add(new ScriptBundle("~/bundles/scripts/form").Include(
+                "~/Assets/vendor/jquery.iosslider.min.js",
+                "~/Assets/vendor/jquery.validate.js",
+                "~/Assets/vendor/jquery.validate.unobtrusive.js",
                 "~/Assets/vendor/jquery.form.js"));
 
         }

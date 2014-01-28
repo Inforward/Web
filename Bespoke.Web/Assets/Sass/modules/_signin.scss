@@ -141,7 +141,7 @@
 	&>div {
 		float: left;
 		width: 1px;
-		height: 270px;
+		height: 290px;
 		margin-left: 20px;
 		background-color: #c0c0be;
 	}
@@ -151,6 +151,12 @@
 		left: 0px;
 		top: 30px;
 	}
+}
+
+.terms-wrap {
+	max-width: 320px;
+	font-size: .9em;
+	margin-bottom: 20px;
 }
 
 

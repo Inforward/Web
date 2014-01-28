@@ -40,7 +40,7 @@ namespace Bespoke.Web.Controllers
         [Route("~/login", Name = "Login")]
         public ActionResult Login()
         {
-            var model = new LoginModel() {PersistLogin = true};
+            var model = new LoginRegisterModel() {LoginPersistLogin = true};
 
             return View(model);
         }
@@ -48,12 +48,12 @@ namespace Bespoke.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("login", Name = "EmailLogin")]
-        public JsonResult Login(LoginModel model)
+        public JsonResult Login(LoginRegisterModel model)
         {
             var request = new LoginRequest()
                 {
-                    Email = model.Email,
-                    Password = model.Password,
+                    Email = model.LoginEmail,
+                    Password = model.LoginPassword,
                     LoginProvider = LoginProviders.Email
                 };
 
@@ -61,10 +61,15 @@ namespace Bespoke.Web.Controllers
 
             if (response.Success)
             {
-                SignIn(response.User, model.PersistLogin);
+                SignIn(response.User, model.LoginPersistLogin);
             }
 
-            return Json(response);
+            return Json(new
+                {
+                    response.Success,
+                    response.Message,
+                    User = response.User != null ? ToUserViewModel(response.User) : null
+                });
         }
 
         [HttpPost]
@@ -96,27 +101,50 @@ namespace Bespoke.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Signup(LoginModel model)
+        public JsonResult Signup(LoginRegisterModel model)
         {
-            //if (ModelState.IsValid)
+            var request = new CreateUserRequest()
             {
-                var request = new CreateUserRequest()
-                {
-                    Email = model.Email,
-                    Password = model.Password
-                };
+                Email = model.SignupEmail,
+                Password = model.SignupPassword,
+                FirstName = model.SignupFirstName,
+                LastName = model.SignupLastName
+            };
 
-                var response = _userService.CreateUser(request);
+            var response = _userService.CreateUser(request);
 
-                if (response.Success)
-                {
-                    SignIn(response.User, model.PersistLogin);
-                }
-
-                return Json(response);
+            if (response.Success)
+            {
+                SignIn(response.User, true);
             }
 
-            return Json(new { Success = false, Message = "Model Errors"});
+            return Json(new
+                {
+                    response.Success,
+                    response.Message,
+                    User = response.User != null ? ToUserViewModel(response.User) : null
+                });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public JsonResult ResetPassword(LoginRegisterModel model)
+        {
+            return Json(new {Success = true});
+        }
+
+        #endregion
+
+        #region Mapping Methods
+
+        public static UserViewModel ToUserViewModel(User user)
+        {
+            return new UserViewModel()
+            {
+                ImageUrl = string.Empty,
+                Name = user.Name,
+                UserId = user.UserId
+            };
         }
 
         #endregion

@@ -21,6 +21,18 @@
 /* 
    Utility Classes
 */
+.mt10 {
+  margin-top: 10px !important; }
+
+.mt15 {
+  margin-top: 15px !important; }
+
+.mt30 {
+  margin-top: 30px !important; }
+
+.smaller {
+  font-size: .9em; }
+
 /* 
    Global Styles
 */
@@ -554,6 +566,7 @@ a {
   border-bottom: 1px solid #cccccc; }
 
 .checkbox-wrap {
+  position: relative;
   *zoom: 1; }
   .checkbox-wrap:before, .checkbox-wrap:after {
     content: " ";
@@ -564,10 +577,12 @@ a {
     float: left; }
   .checkbox-wrap label {
     float: left;
-    margin-left: 5px; }
+    margin-left: 5px;
+    position: relative;
+    top: -4px; }
 
 .submit-wrap {
-  margin-top: 30px !important; }
+  margin: 30px 0 20px; }
 
 input[type="text"],
 input[type="password"],
@@ -585,7 +600,27 @@ input[type="url"], textarea {
   margin: 0 0 1.2rem 0; }
 
 label {
-  font-size: 1rem; }
+  font-size: 1rem;
+  margin-bottom: 0.3rem; }
+
+input[type="text"].input-validation-error,
+input[type="password"].input-validation-error,
+input[type="search"].input-validation-error,
+textarea.input-validation-error {
+  margin-bottom: 0; }
+
+.error, .validation-summary, .field-validation-error {
+  font-size: .9em;
+  color: #b90000;
+  font-weight: 600; }
+
+.validation-summary {
+  display: none; }
+
+.field-validation-error {
+  display: block;
+  margin-top: .2em;
+  margin-bottom: 1.2em; }
 
 /* Every post, on every page, gets this style on its <article> tag */
 .post {
@@ -1095,7 +1130,7 @@ body .md-sidebar-shad .m-sidebar {
   .signin-center-col > div {
     float: left;
     width: 1px;
-    height: 270px;
+    height: 290px;
     margin-left: 20px;
     background-color: #c0c0be; }
   .signin-center-col img {
@@ -1103,17 +1138,36 @@ body .md-sidebar-shad .m-sidebar {
     left: 0px;
     top: 30px; }
 
+.terms-wrap {
+  max-width: 320px;
+  font-size: .9em;
+  margin-bottom: 20px; }
+
 @media only screen and (min-width: 750px) {
   .signin-center-col {
     display: block; } }
+.iosslider {
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden; }
+  .iosslider .slider {
+    width: 100%;
+    height: 650px;
+    list-style-type: none; }
+    .iosslider .slider .slide {
+      float: left;
+      width: 100%;
+      height: 100%; }
+
 .slides {
   background: white;
   overflow: hidden;
   position: relative;
-  width: 100%;
   top: 0;
   left: 0;
-  height: 100%; }
+  height: 100%;
+  width: 100%; }
   .slides > ul {
     display: block;
     float: left;

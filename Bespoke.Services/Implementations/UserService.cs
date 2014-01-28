@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using Bespoke.Data;
 using Bespoke.Infrastructure.Extensions;
+using Bespoke.Infrastructure.Helpers;
 using Bespoke.Models;
 using Bespoke.Services.Helpers;
 using Bespoke.Services.Contracts;
@@ -27,6 +28,9 @@ namespace Bespoke.Services.Implementations
 
             try
             {
+                Required.NotEmpty(request.Email, "Email");
+                Required.NotEmpty(request.Password, "Password");
+
                 switch (request.LoginProvider)
                 {
                     case LoginProviders.Email:
@@ -67,11 +71,10 @@ namespace Bespoke.Services.Implementations
 
             try
             {
-                if (string.IsNullOrWhiteSpace(request.Email))
-                    throw new ArgumentNullException("Email");
-
-                if (string.IsNullOrWhiteSpace(request.Password))
-                    throw new ArgumentNullException("Password");
+                Required.NotEmpty(request.Email, "Email");
+                Required.NotEmpty(request.Password, "Password");
+                Required.NotEmpty(request.FirstName, "FirstName");
+                Required.NotEmpty(request.LastName, "LastName");
 
                 var exists = _userRepository.GetByEmail(request.Email) != null;
 
@@ -83,6 +86,8 @@ namespace Bespoke.Services.Implementations
                 var user = new User()
                     {
                         Email = request.Email,
+                        FirstName = request.FirstName,
+                        LastName = request.LastName,
                         PasswordHash = password.Hash,
                         PasswordSalt = password.Salt,
                         UserRegistrationMethod = UserRegistrationMethods.Email

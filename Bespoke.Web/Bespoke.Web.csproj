@@ -193,7 +193,8 @@
     </Compile>
     <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Helpers\HtmlExtensions.cs" />
-    <Compile Include="Models\Account\LoginModel.cs" />
+    <Compile Include="Models\Account\LoginRegisterModel.cs" />
+    <Compile Include="Models\Account\UserViewModel.cs" />
     <Compile Include="Models\Blog\ArchiveViewModel.cs" />
     <Compile Include="Models\Blog\CategoryViewModel.cs" />
     <Compile Include="Models\Blog\PostViewModel.cs" />
@@ -271,6 +272,8 @@
     <Content Include="Assets\Vendor\jquery.sharrre.js" />
     <Content Include="Assets\Vendor\jquery.themepunch.plugins.min.js" />
     <Content Include="Assets\Vendor\jquery.themepunch.showbizpro.min.js" />
+    <Content Include="Assets\Vendor\jquery.validate.js" />
+    <Content Include="Assets\Vendor\jquery.validate.unobtrusive.js" />
     <Content Include="Assets\Vendor\respond.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
