@@ -274,6 +274,7 @@
     <Content Include="Assets\Vendor\jquery.themepunch.showbizpro.min.js" />
     <Content Include="Assets\Vendor\jquery.validate.js" />
     <Content Include="Assets\Vendor\jquery.validate.unobtrusive.js" />
+    <Content Include="Assets\Vendor\jquery.watermark.js" />
     <Content Include="Assets\Vendor\respond.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

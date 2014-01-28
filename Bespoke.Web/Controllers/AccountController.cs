@@ -38,11 +38,11 @@ namespace Bespoke.Web.Controllers
 
         [HttpGet]
         [Route("~/login", Name = "Login")]
-        public ActionResult Login()
+        public PartialViewResult Login()
         {
             var model = new LoginRegisterModel() {LoginPersistLogin = true};
 
-            return View(model);
+            return PartialView(model);
         }
 
         [HttpPost]

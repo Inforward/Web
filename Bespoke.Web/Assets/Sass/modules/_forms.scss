@@ -1,7 +1,6 @@
 
 
 .form-section {
-	margin-top: 30px;
 	font-size: 0.875rem;
 	color: #4d4d4d;
 
@@ -20,7 +19,7 @@
 	}
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 560px) {
 	.form-section {
 		h2 {
 			font-size: rem-calc(24);

@@ -1,8 +1,42 @@
 
+#login-modal {
+	height: 660px;
+	padding: 1.25em 1em;
+
+	&>.row:first-child {
+		height: 100%;
+	}
+
+	.iosslider {
+		position: relative;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		height: 100%;
+
+		.slider {
+			width: 100%;
+			height: 100%;
+			list-style-type: none;
+
+			.slide {
+				float: left;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 750px) {
+	#login-modal {
+		height: 550px;
+	}
+}
 
 .social-login-btn {
 	cursor: pointer;
-	width: 245px;
+	width: 240px;
 	display: block;
 	overflow: hidden;
 	padding: 8px 22px 8px 15px;
@@ -135,7 +169,7 @@
 	width: 41px;
 	height: 316px;
 	position: relative;
-	margin: 0 40px;
+	margin: 0;
 	display: none;
 
 	&>div {
@@ -155,7 +189,7 @@
 
 .terms-wrap {
 	max-width: 320px;
-	font-size: .9em;
+	font-size: 11px;
 	margin-bottom: 20px;
 }
 
@@ -164,5 +198,11 @@
 @media only screen and (min-width: 750px) {
 	.signin-center-col {
 		display: block;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.signin-center-col {
+		margin: 0 40px;
 	}
 }

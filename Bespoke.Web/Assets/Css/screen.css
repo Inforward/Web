@@ -30,6 +30,12 @@
 .mt30 {
   margin-top: 30px !important; }
 
+.mb15 {
+  margin-bottom: 15px !important; }
+
+.mb30 {
+  margin-bottom: 30px !important; }
+
 .smaller {
   font-size: .9em; }
 
@@ -541,7 +547,6 @@ a {
   .article-share .sharecount {
     margin-left: 15px; } }
 .form-section {
-  margin-top: 30px;
   font-size: 0.875rem;
   color: #4d4d4d; }
   .form-section h2 {
@@ -555,7 +560,7 @@ a {
     display: block;
     margin-bottom: 20px; }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 560px) {
   .form-section h2 {
     font-size: 1.5rem;
     margin-bottom: 40px; } }
@@ -1000,9 +1005,32 @@ body .m-sidebar {
 body .md-sidebar-shad .m-sidebar {
   box-shadow: 0 0 0.6em rgba(0, 0, 0, 0.35); }
 
+#login-modal {
+  height: 660px;
+  padding: 1.25em 1em; }
+  #login-modal > .row:first-child {
+    height: 100%; }
+  #login-modal .iosslider {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    height: 100%; }
+    #login-modal .iosslider .slider {
+      width: 100%;
+      height: 100%;
+      list-style-type: none; }
+      #login-modal .iosslider .slider .slide {
+        float: left;
+        width: 100%;
+        height: 100%; }
+
+@media only screen and (min-width: 750px) {
+  #login-modal {
+    height: 550px; } }
 .social-login-btn {
   cursor: pointer;
-  width: 245px;
+  width: 240px;
   display: block;
   overflow: hidden;
   padding: 8px 22px 8px 15px;
@@ -1125,7 +1153,7 @@ body .md-sidebar-shad .m-sidebar {
   width: 41px;
   height: 316px;
   position: relative;
-  margin: 0 40px;
+  margin: 0;
   display: none; }
   .signin-center-col > div {
     float: left;
@@ -1140,26 +1168,15 @@ body .md-sidebar-shad .m-sidebar {
 
 .terms-wrap {
   max-width: 320px;
-  font-size: .9em;
+  font-size: 11px;
   margin-bottom: 20px; }
 
 @media only screen and (min-width: 750px) {
   .signin-center-col {
     display: block; } }
-.iosslider {
-  position: relative;
-  top: 0;
-  left: 0;
-  overflow: hidden; }
-  .iosslider .slider {
-    width: 100%;
-    height: 650px;
-    list-style-type: none; }
-    .iosslider .slider .slide {
-      float: left;
-      width: 100%;
-      height: 100%; }
-
+@media only screen and (min-width: 960px) {
+  .signin-center-col {
+    margin: 0 40px; } }
 .slides {
   background: white;
   overflow: hidden;

@@ -64,10 +64,19 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     @Scripts.Render("~/bundles/vendor")
+    
+    <script type="text/javascript">
+        $(function (bespoke) {
+            bespoke.config = {                
+                rootUrl: '@Url.Content("~")',
+                fbAppId: '@ViewBag.FacebookAppId',
+                loginUrl: '@Url.RouteUrl("Login")'
+            };
+        }(this.bespoke = this.bespoke || {}));
+    </script>
+
     @Scripts.Render("~/bundles/scripts")
     @RenderSection("scripts", required: false)
-    
-    @*helper for partial views*@
     @Html.PageScripts()
 
     @if (!HttpContext.Current.IsDebuggingEnabled)

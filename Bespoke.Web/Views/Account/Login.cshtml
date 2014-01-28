@@ -1,8 +1,4 @@
 ﻿@model LoginRegisterModel
-@{
-    ViewBag.Title = "Signup";
-    Layout = "~/Views/Layouts/_Default.cshtml";
-}
 
 <div class="row">
     <div class="iosslider">
@@ -18,8 +14,7 @@
                             @using (Html.BeginForm("ResetPassword", "Account", FormMethod.Post, new { id = "forgot-form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.LabelFor(m => m.ResetPasswordEmail)
-                                @Html.TextBoxFor(m => m.ResetPasswordEmail)
+                                @Html.TextBoxFor(m => m.ResetPasswordEmail, new { data_placeholder = "Enter Your Email Address" })
                                 @Html.ValidationMessageFor(m => m.ResetPasswordEmail)
                                 <div class="submit-wrap">
                                     <input type="submit" value="Continue" class="button" />
@@ -29,7 +24,7 @@
                     </div>
                 </section>
             </li>
-            <li class="slide active">
+            <li class="slide">
                 <section class="form-section">
                     <div class="row">
                         <h2 class="columns">Sign In to @ViewBag.SiteName</h2>
@@ -40,11 +35,11 @@
                             @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "login-form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.LabelFor(m => m.LoginEmail)
-                                @Html.TextBoxFor(m => m.LoginEmail)
+
+                                @Html.TextBoxFor(m => m.LoginEmail, new { data_placeholder="Email" })
                                 @Html.ValidationMessageFor(m => m.LoginEmail)
-                                @Html.LabelFor(m => m.LoginPassword)
-                                @Html.PasswordFor(m => m.LoginPassword)
+
+                                @Html.PasswordFor(m => m.LoginPassword, new { data_placeholder = "Password" })
                                 @Html.ValidationMessageFor(m => m.LoginPassword)
 
                                 <div class="checkbox-wrap">
@@ -53,7 +48,7 @@
                                 <p class="mt15">
                                     <input type="submit" value="Sign In" class="button" />
                                 </p>
-                                <a id="forgot" class="forgot" href="#">Forgot your username or password?</a>
+                                <a id="forgot" class="forgot" href="#">Forgot your password?</a>
                             }
                         </div>
                         <div class="signin-center-col">
@@ -64,9 +59,9 @@
                             <a id="fb-login" class="social-login-btn fb">
                                 <i class="fa fa-facebook"></i><span>Sign In with Facebook</span>
                             </a>
-                            @*<a id="gplus-login" class="social-login-btn gplus">
+                            <a id="gplus-login" class="social-login-btn gplus">
                                 <i class="fa fa-google-plus"></i><span>Sign In with Google</span>
-                            </a>*@
+                            </a>
                             <a id="email-signup" class="social-login-btn email">
                                 <i class="fa fa-envelope"></i><span>Sign Up with Email</span>
                             </a>
@@ -85,24 +80,24 @@
                             @using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { id = "signup-form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.LabelFor(m => m.SignupEmail)
-                                @Html.TextBoxFor(m => m.SignupEmail)
-                                @Html.ValidationMessageFor(m => m.SignupEmail)
-                                @Html.LabelFor(m => m.SignupPassword)
-                                @Html.PasswordFor(m => m.SignupPassword)
-                                @Html.ValidationMessageFor(m => m.SignupPassword)
-                                @Html.LabelFor(m => m.SignupFirstName)
-                                @Html.PasswordFor(m => m.SignupFirstName)
+       
+                                @Html.TextBoxFor(m => m.SignupFirstName, new { data_placeholder = "First Name" })
                                 @Html.ValidationMessageFor(m => m.SignupFirstName)
-                                @Html.LabelFor(m => m.SignupLastName)
-                                @Html.PasswordFor(m => m.SignupLastName)
+                 
+                                @Html.TextBoxFor(m => m.SignupLastName, new { data_placeholder = "Last Name" })
                                 @Html.ValidationMessageFor(m => m.SignupLastName)
+
+                                @Html.TextBoxFor(m => m.SignupEmail, new { data_placeholder = "Your Email Address" })
+                                @Html.ValidationMessageFor(m => m.SignupEmail)
+
+                                @Html.PasswordFor(m => m.SignupPassword, new { data_placeholder = "Choose a Password" })
+                                @Html.ValidationMessageFor(m => m.SignupPassword)
                                 
-                                <div class="submit-wrap">
-                                    <input type="submit" value="Sign Up" class="button" />    
-                                </div>
                                 <div class="terms-wrap">
-                                    By clicking Sign Up you indicate that you have read and agreed to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.
+                                    By signing up, I agree to @string.Format("{0}'s", ViewBag.SiteName) <a href="#">Terms of Use.</a>
+                                </div>
+                                <div class="mb30">
+                                    <input type="submit" value="Sign Up" class="button" />    
                                 </div>
                             }
                         </div>
@@ -114,9 +109,9 @@
                             <a id="fb-login" class="social-login-btn fb">
                                 <i class="fa fa-facebook"></i><span>Sign In with Facebook</span>
                             </a>
-                            @*<a id="gplus-login" class="social-login-btn gplus">
+                            <a id="gplus-login" class="social-login-btn gplus">
                                 <i class="fa fa-google-plus"></i><span>Sign In with Google</span>
-                            </a>*@
+                            </a>
                             <div class="mt30">
                                 Already have an account? <a id="go-to-login" href="#">Sign In</a>
                             </div>
@@ -127,18 +122,4 @@
         </ul>
     </div>
 </div>
-
-@section scripts {
-    @Scripts.Render("~/bundles/scripts/form")
-    <script>
-
-        (function($) {
-            $(function() {
-                bespoke.login.init({
-                    fbAppId: '@ViewBag.FacebookAppId'
-                });
-            });
-        })(jQuery);
-        
-    </script>
-}
+<a class="close-reveal-modal">&#215;</a>

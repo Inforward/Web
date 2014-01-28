@@ -33,6 +33,11 @@
         // Perform any post-boostrap (global) initialization
         $(document).foundation();
 
+        $("[data-login]").on("click", function(e) {
+            e.preventDefault();
+            bespoke.login.show();
+        });
+
     });
 
 })(window.bespoke = window.bespoke || {}, window, jQuery);

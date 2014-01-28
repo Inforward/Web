@@ -33,7 +33,12 @@ namespace Bespoke.Web
                 "~/Assets/vendor/foundation/foundation.offcanvas.js",
                 "~/Assets/vendor/foundation/foundation.reveal.js",
                 "~/Assets/vendor/jquery.scroll-start-stop.js",
-                "~/Assets/vendor/jquery.sharrre.js"));
+                "~/Assets/vendor/jquery.watermark.js",
+                "~/Assets/vendor/jquery.sharrre.js",
+                "~/Assets/vendor/jquery.iosslider.min.js",
+                "~/Assets/vendor/jquery.validate.js",
+                "~/Assets/vendor/jquery.validate.unobtrusive.js",
+                "~/Assets/vendor/jquery.form.js"));
 
             // Header bundle
             bundles.Add(new ScriptBundle("~/bundles/vendor/modernizr").Include(
@@ -42,16 +47,15 @@ namespace Bespoke.Web
 
             // Home page bundle
             bundles.Add(new ScriptBundle("~/bundles/vendor/home").Include(
-                "~/Assets/vendor/jquery.iosslider.min.js",
                 "~/Assets/vendor/jquery.themepunch.plugins.min.js",
                 "~/Assets/vendor/jquery.themepunch.showbizpro.min.js"));
 
             // Form bundle (for use on pages with forms)
-            bundles.Add(new ScriptBundle("~/bundles/scripts/form").Include(
-                "~/Assets/vendor/jquery.iosslider.min.js",
-                "~/Assets/vendor/jquery.validate.js",
-                "~/Assets/vendor/jquery.validate.unobtrusive.js",
-                "~/Assets/vendor/jquery.form.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/scripts/form").Include(
+            //    "~/Assets/vendor/jquery.iosslider.min.js",
+            //    "~/Assets/vendor/jquery.validate.js",
+            //    "~/Assets/vendor/jquery.validate.unobtrusive.js",
+            //    "~/Assets/vendor/jquery.form.js"));
 
         }
 
