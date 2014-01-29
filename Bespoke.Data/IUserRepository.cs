@@ -7,10 +7,8 @@ using Bespoke.Models;
 
 namespace Bespoke.Data
 {
-    public interface IUserRepository
+    public interface IUserRepository : IRepository<User>
     {
         User GetByEmail(string email);
-        void Create(User user);
-        void Update(User user);
     }
 }

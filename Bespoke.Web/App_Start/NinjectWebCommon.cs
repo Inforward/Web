@@ -1,6 +1,5 @@
 using Bespoke.Data;
-using Bespoke.Data.Sql.Models;
-using Bespoke.Data.Sql.Repositories;
+using Bespoke.Data.Mongo;
 using Bespoke.Infrastructure.Caching;
 using Bespoke.Services;
 using Bespoke.Services.Contracts;
@@ -66,7 +65,7 @@ namespace Bespoke.Web.App_Start
             kernel.Bind<IUserService>().To<UserService>();
 
             // Bind Repositories
-            kernel.Bind<IUnitOfWork>().To<BespokeContext>();
+            //kernel.Bind<IUnitOfWork>().To<BespokeContext>();
             kernel.Bind<IUserRepository>().To<UserRepository>();
 
             // Miscellaneous

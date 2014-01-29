@@ -229,6 +229,8 @@
     <Content Include="Assets\Images\discussions-banner-bg.jpg" />
     <Content Include="Assets\Images\discussions-cover-photo.png" />
     <Content Include="Assets\Images\header-background.png" />
+    <Content Include="Assets\Images\login-bg-bw.jpg" />
+    <Content Include="Assets\Images\login-bg-color.jpg" />
     <Content Include="Assets\Images\logo-432x153.png" />
     <Content Include="Assets\Images\promo-banner-blog.jpg" />
     <Content Include="Assets\Images\promo-banner-discuss.jpg" />
@@ -293,9 +295,9 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bespoke.Data.Sql\Bespoke.Data.Sql.csproj">
-      <Project>{b45b8400-0f15-4e3b-9e05-cebfca2a9594}</Project>
-      <Name>Bespoke.Data.Sql</Name>
+    <ProjectReference Include="..\Bespoke.Data.Mongo\Bespoke.Data.Mongo.csproj">
+      <Project>{077e1dd5-e1bd-44bc-9c70-c03663623fa3}</Project>
+      <Name>Bespoke.Data.Mongo</Name>
     </ProjectReference>
     <ProjectReference Include="..\Bespoke.Data\Bespoke.Data.csproj">
       <Project>{1ac15522-a5ed-4a5d-870e-eea4b0d810f1}</Project>

@@ -51,7 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auth\FacebookUser.cs" />
+    <Compile Include="EntityBase.cs" />
     <Compile Include="Blog\Archive.cs" />
     <Compile Include="Blog\Attachment.cs" />
     <Compile Include="Blog\Author.cs" />

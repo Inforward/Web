@@ -93,7 +93,7 @@ namespace Bespoke.Services.Implementations
                         UserRegistrationMethod = UserRegistrationMethods.Email
                     };
 
-                _userRepository.Create(user);
+                _userRepository.Insert(user);
 
                 response.User = user;
                 response.Success = true;
@@ -143,7 +143,7 @@ namespace Bespoke.Services.Implementations
 
             if (existingUser == null)
             {
-                _userRepository.Create(user);
+                _userRepository.Insert(user);
             }
 
             return user;

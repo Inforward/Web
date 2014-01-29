@@ -6,13 +6,15 @@
             <li class="slide">
                 <section class="form-section">
                     <div class="row">
-                        <h2 class="columns">Forgot your username or password?</h2>
-                        <span class="validation-summary"></span>
+                        <div class="columns small-11">
+                            <h2>Forgot your username or password?</h2>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="columns large-4 medium-6 small-10">
                             @using (Html.BeginForm("ResetPassword", "Account", FormMethod.Post, new { id = "forgot-form" }))
                             {
+                                <span class="validation-summary"></span>
                                 @Html.AntiForgeryToken()
                                 @Html.TextBoxFor(m => m.ResetPasswordEmail, new { data_placeholder = "Enter Your Email Address" })
                                 @Html.ValidationMessageFor(m => m.ResetPasswordEmail)
@@ -27,18 +29,19 @@
             <li class="slide">
                 <section class="form-section">
                     <div class="row">
-                        <h2 class="columns">Sign In to @ViewBag.SiteName</h2>
-                        <span class="validation-summary"></span>
+                        <div class="columns small-11">
+                            <h2>Sign In to @ViewBag.SiteName</h2>
+                            
+                        </div>
                     </div>
                     <div class="row">
                         <div class="large-5 medium-5 small-11 columns">
                             @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "login-form" }))
                             {
+                                <span class="validation-summary"></span>
                                 @Html.AntiForgeryToken()
-
                                 @Html.TextBoxFor(m => m.LoginEmail, new { data_placeholder="Email" })
                                 @Html.ValidationMessageFor(m => m.LoginEmail)
-
                                 @Html.PasswordFor(m => m.LoginPassword, new { data_placeholder = "Password" })
                                 @Html.ValidationMessageFor(m => m.LoginPassword)
 
@@ -72,24 +75,23 @@
             <li class="slide">
                 <section class="form-section">
                     <div class="row">
-                        <h2 class="columns">Sign Up for Your Free Account!</h2>
-                        <span class="validation-summary"></span>
+                        <div class="columns small-11">
+                            <h2>Sign Up for Your Free Account!</h2>
+                            
+                        </div>
                     </div>
                     <div class="row">
                         <div class="large-5 medium-5 small-11 columns">
                             @using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { id = "signup-form" }))
                             {
+                                <span class="validation-summary"></span>
                                 @Html.AntiForgeryToken()
-       
                                 @Html.TextBoxFor(m => m.SignupFirstName, new { data_placeholder = "First Name" })
                                 @Html.ValidationMessageFor(m => m.SignupFirstName)
-                 
                                 @Html.TextBoxFor(m => m.SignupLastName, new { data_placeholder = "Last Name" })
                                 @Html.ValidationMessageFor(m => m.SignupLastName)
-
                                 @Html.TextBoxFor(m => m.SignupEmail, new { data_placeholder = "Your Email Address" })
                                 @Html.ValidationMessageFor(m => m.SignupEmail)
-
                                 @Html.PasswordFor(m => m.SignupPassword, new { data_placeholder = "Choose a Password" })
                                 @Html.ValidationMessageFor(m => m.SignupPassword)
                                 
@@ -122,4 +124,5 @@
         </ul>
     </div>
 </div>
+<div class="login-bg"></div>
 <a class="close-reveal-modal">&#215;</a>

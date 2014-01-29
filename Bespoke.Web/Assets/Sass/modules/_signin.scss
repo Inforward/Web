@@ -2,6 +2,7 @@
 #login-modal {
 	height: 660px;
 	padding: 1.25em 1em;
+	z-index: 2000;	
 
 	&>.row:first-child {
 		height: 100%;
@@ -26,11 +27,36 @@
 			}
 		}
 	}
+	
+	.login-bg {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		background: url(../Images/login-bg-bw.jpg) bottom right no-repeat #fff;
+		background-size: cover;	
+		width: 300px;
+		height: 309px;	
+		display: none;
+	}	
 }
 
 @media only screen and (min-width: 750px) {
 	#login-modal {
+		padding: 1.75em 1em;
 		height: 550px;
+
+		.login-bg {
+			display: block;
+		}
+	}
+}
+
+@media only screen and (min-width: 1250px) {
+	#login-modal {
+		.login-bg {
+			width: 369px;
+			height: 380px;
+		}
 	}
 }
 

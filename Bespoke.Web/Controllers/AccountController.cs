@@ -88,7 +88,12 @@ namespace Bespoke.Web.Controllers
                 SignIn(response.User, true);
             }
 
-            return Json(response);
+            return Json(new
+                {
+                    response.Success,
+                    response.Message,
+                    User = response.User != null ? ToUserViewModel(response.User) : null
+                });
         }
 
         [HttpGet]
@@ -141,9 +146,8 @@ namespace Bespoke.Web.Controllers
         {
             return new UserViewModel()
             {
-                ImageUrl = string.Empty,
-                Name = user.Name,
-                UserId = user.UserId
+                ImageUrl = user.ProfileImageUrl,
+                Name = user.Name
             };
         }
 

@@ -37,6 +37,7 @@
       <HintPath>..\packages\mongocsharpdriver.1.8.3\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,11 +46,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MongoDbRepository.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bespoke.Data\Bespoke.Data.csproj">
+      <Project>{1ac15522-a5ed-4a5d-870e-eea4b0d810f1}</Project>
+      <Name>Bespoke.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bespoke.Model\Bespoke.Models.csproj">
+      <Project>{0b795b9c-23c0-41d5-8240-1a967938b408}</Project>
+      <Name>Bespoke.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,10 +2,7 @@
 
     bespoke.events = {
 
-        window: {
-            scroll: 'window/scroll',
-            scrollStop: 'window/scrollStop'
-        }
+        login: '/login'
 
     };
 

@@ -8,25 +8,22 @@
             loginUrl = config.loginUrl,
             facebookAppId = config.fbAppId,
             facebookProvider = require('facebookProvider'),
-            intialized = false,
-            initializing = false,
-            $modal = $("<div id='login-modal' class='reveal-modal' data-reveal />");
-        
-        var $slider,
-            $forgotForm,
-            $loginForm,
-            $signupForm;
+            events = require('events'),
+            pubsub = require('pubsub'),
+            $modal = $("<div id='login-modal' class='reveal-modal' data-reveal />"),
+            $slider;
         
         // Add modal to the DOM
         $modal.appendTo("body");
 
         function init(callback) {
-           
-            // Initialize providers
-            facebookProvider.init(facebookAppId);
-            
-            // Initialize modal
+
             if ($modal.is(":empty")) {
+                
+                // Initialize providers
+                facebookProvider.init(facebookAppId);
+                
+                // Load login html
                 $.ajax({
                     url: loginUrl,
                     success: function (html) {
@@ -43,9 +40,6 @@
             $modal.html(html);
 
             $slider = $modal.find(".iosslider");
-            $forgotForm = $modal.find("#forgot-form");
-            $loginForm = $modal.find("#login-form");
-            $signupForm = $modal.find("#signup-form");
             
             // Init slider when first opened
             $(document).on('opened', '#login-modal', function () {
@@ -53,7 +47,7 @@
                     $slider.iosSlider('destroy');
                 
                 initSlider();
-                $loginForm.find("input:text").first().focus();
+                $modal.find("#login-form input:text").first().focus();
             });
             
             // Initialize watermarks
@@ -63,38 +57,24 @@
             
             // Wire-up events
             $modal.find("#fb-login").on("click", facebookLogin);
-
-            // Ajax-ify forms
-            $loginForm.ajaxForm({
-                dataType: 'json',
-                success: function (response) {
-                    if (!response.Success) {
-                        $loginForm.find(".validation-summary").text(response.Message).show();
-                        return;
-                    }
-                }
-            });
-
-            $signupForm.ajaxForm({
-                dataType: 'json',
-                success: function (response) {
-                    if (!response.Success) {
-                        $signupForm.find(".validation-summary").text(response.Message).show();
-                        return;
-                    }
-                }
-            });
-
-            $forgotForm.ajaxForm({
-                dataType: 'json',
-                success: function (response) {
-                    if (!response.Success) {
-                        $forgotForm.find(".validation-summary").text(response.Message).show();
-                        return;
-                    }
-                }
-            });
             
+            // Ajax-ify forms
+            $modal.find("form").ajaxForm({
+                dataType: 'json',
+                beforeSubmit: function (arr, $form) {
+                    return $form.valid();
+                },
+                success: function (response, statusText, xhr, $form) {
+                    if (!response.Success) {
+                        $form.find(".validation-summary").text(response.Message).show();
+                        return;
+                    }
+
+                    pubsub.publish(events.login, response.User);
+                    close();
+                }
+            });
+           
             // Initialize form validators
             $.validator.unobtrusive.parse('#login-modal form');
 
@@ -148,7 +128,7 @@
         function resetForm($form) {
             $form.validate().resetForm();
             $form.find("input:text,input:password").val("");
-            $form.find(".field-validation-error,.field-validation-valid").text("");
+            $form.find(".field-validation-error,.field-validation-valid,.validation-summary").text("");
         }
         
         function show() {
@@ -156,6 +136,10 @@
                 reset();
                 $modal.foundation('reveal', 'open');
             });
+        }
+        
+        function close() {
+            $modal.foundation('reveal', 'close');
         }
 
         return {

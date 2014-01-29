@@ -17,16 +17,34 @@ namespace Bespoke.Data.Sql.Repositories
             return GetDbSet<User>().FirstOrDefault(u => u.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
         }
 
-        public void Create(User user)
+        public bool Insert(User entity)
         {
-            GetDbSet<User>().Add(user);
-            UnitOfWork.SaveChanges();
+            throw new NotImplementedException();
         }
 
-        public void Update(User user)
+        bool IRepository<User>.Update(User entity)
         {
-            SetEntityState(user, EntityState.Modified);
-            UnitOfWork.SaveChanges();
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public System.Collections.Generic.IList<User> Find(System.Linq.Expressions.Expression<Func<User, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public System.Collections.Generic.IList<User> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetById(Guid id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

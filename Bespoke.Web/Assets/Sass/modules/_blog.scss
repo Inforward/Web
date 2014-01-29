@@ -31,6 +31,10 @@
 		font-size: inherit; 
 		color: inherit;
 		white-space: nowrap;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 }
 
