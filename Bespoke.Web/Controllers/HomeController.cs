@@ -10,11 +10,17 @@ namespace Bespoke.Web.Controllers
     {
         private readonly IBlogService _blogService;
 
-        public HomeController(IBlogService blogService)
+        #region Constructor
+
+        public HomeController(IUserService userService, IBlogService blogService) 
+            : base(userService)
         {
             _blogService = blogService;
         }
 
+        #endregion
+
+        [Route(Name="Home")]
         public ActionResult Index()
         {
             var response = _blogService.GetRecentPosts().Clone();

@@ -14,6 +14,11 @@ namespace Bespoke.Infrastructure.Extensions
             return list == null || !list.Any();
         }
 
+        public static bool IsNullOrEmpty(this string s)
+        {
+            return string.IsNullOrWhiteSpace(s);
+        }
+
         public static T Clone<T>(this T source)
         {
             using (var ms = new MemoryStream())

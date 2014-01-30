@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
+using System.Threading.Tasks;
 using Bespoke.Data;
 using Bespoke.Infrastructure.Extensions;
 using Bespoke.Infrastructure.Helpers;
@@ -8,7 +9,6 @@ using Bespoke.Models;
 using Bespoke.Services.Helpers;
 using Bespoke.Services.Contracts;
 using Bespoke.Services.Messages.UserService;
-using Facebook;
 
 namespace Bespoke.Services.Implementations
 {
@@ -21,16 +21,13 @@ namespace Bespoke.Services.Implementations
             _userRepository = userRepository;
         }
 
-        public LoginResponse Login(LoginRequest request)
+        public GenericUserResponse Login(LoginRequest request)
         {
-            var response = new LoginResponse();
+            var response = new GenericUserResponse();
             var user = default(User);
 
             try
             {
-                Required.NotEmpty(request.Email, "Email");
-                Required.NotEmpty(request.Password, "Password");
-
                 switch (request.LoginProvider)
                 {
                     case LoginProviders.Email:
@@ -65,9 +62,9 @@ namespace Bespoke.Services.Implementations
             return response;
         }
 
-        public CreateUserResponse CreateUser(CreateUserRequest request)
+        public GenericUserResponse CreateUser(CreateUserRequest request)
         {
-            var response = new CreateUserResponse();
+            var response = new GenericUserResponse();
 
             try
             {
@@ -107,11 +104,32 @@ namespace Bespoke.Services.Implementations
             return response;
         }
 
+        public GenericUserResponse GetUserByEmail(string email)
+        {
+            var response = new GenericUserResponse();
+
+            try
+            {
+                response.User = _userRepository.GetByEmail(email);
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+
         private User LoginWithEmail(string email, string password)
         {
+            Required.NotEmpty(email, "Email");
+            Required.NotEmpty(password, "Password");
+
             var user = _userRepository.GetByEmail(email);
 
-            if (user == null || user.UserRegistrationMethod != UserRegistrationMethods.Email || !SaltedHash.Verify(user.PasswordSalt, user.PasswordHash, password))
+            if (user == null || string.IsNullOrWhiteSpace(user.PasswordHash) || !SaltedHash.Verify(user.PasswordSalt, user.PasswordHash, password))
                 throw new Exception("Invalid email address or password");
 
             return user;
@@ -119,31 +137,51 @@ namespace Bespoke.Services.Implementations
 
         private User LoginWithFacebook(string accessToken)
         {
-            if (string.IsNullOrEmpty(accessToken))
-                throw new ArgumentNullException("accessToken", "Invalid access token");
+            Required.NotEmpty(accessToken, "Access Token");
 
-            var client = new FacebookClient(accessToken);
+            var helper = new FacebookHelper(accessToken);
 
-            dynamic facebookUser = client.Get("me");
+            var t1 = Task<User>.Factory.StartNew(helper.GetFacebookUser);
+            var t2 = Task<List<Connection>>.Factory.StartNew(helper.GetFacebookFriends);
 
-            var user = new User()
+            Task.WaitAll(t1, t2);
+
+            var user = t1.Result;
+
+            if (user != null)
             {
-                Email = facebookUser.email,
-                FirstName = facebookUser.first_name,
-                LastName = facebookUser.last_name,
-                FacebookUserId = Convert.ToInt64(facebookUser.id),
-                UserRegistrationMethod = UserRegistrationMethods.Facebook
-            };
+                user.FacebookFriends = t2.Result;
 
-            var existingUser = _userRepository.GetByEmail(user.Email);
+                var existingUser = _userRepository.GetByEmail(user.Email);
 
-            if(existingUser != null && existingUser.UserRegistrationMethod != UserRegistrationMethods.Facebook)
-                throw new Exception("Email account already exists.");
+                if (existingUser != null)
+                {
+                    user.Id = existingUser.Id;
+
+                    if (user.FirstName.IsNullOrEmpty())
+                        user.FirstName = existingUser.FirstName;
+
+                    if (user.LastName.IsNullOrEmpty())
+                        user.LastName = existingUser.LastName;
+
+                    if (!existingUser.FacebookFriends.IsNullOrEmpty())
+                    {
+                        foreach (var friend in existingUser.FacebookFriends.Where(friend => !user.FacebookFriends.Exists(c => c.Id == friend.Id)))
+                        {
+                            user.FacebookFriends.Add(friend);
+                        }
+                    }
+                }
 
 
-            if (existingUser == null)
-            {
-                _userRepository.Insert(user);
+                if (existingUser == null)
+                {
+                    _userRepository.Insert(user);
+                }
+                else
+                {
+                    _userRepository.Update(user);
+                }
             }
 
             return user;

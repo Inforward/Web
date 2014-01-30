@@ -1,8 +1,31 @@
-﻿<header id="header">
+﻿@{
+    var user = ViewBag.CurrentUser as UserViewModel;
+}
+<header id="header">
     <div id="top-nav-wrap">
         <div id="top-nav" class="row">
             <ul class="button-group nav-list">
-                <li><a data-login href="@Url.RouteUrl("Login")">REGISTER or SIGN IN</a></li>
+                <li id="login-profile">
+                    @if (user != null)
+                    {
+                        <a href="#" data-dropdown="drop" class="button dropdown profile">
+                            <img src="@user.ImageUrl" />
+                            <span>@user.Name</span>
+                        </a>
+                        <ul id="drop" data-dropdown-content class="f-dropdown profile-dropdown">
+                            <li>
+                                <img src="@user.ImageUrl" />
+                                <span>@user.Name</span>
+                            </li>
+                            <li><a href="@Url.RouteUrl("AccountProfile")">Edit Profile</a></li>
+                            <li><a href="@Url.RouteUrl("Logout")">Sign Out</a></li>
+                        </ul>
+                    }
+                    else
+                    {
+                        <a data-login href="@Url.RouteUrl("Login")">REGISTER or SIGN IN</a>
+                    }
+                </li>
                 <li>
                     <form id="header-search-form" method="get" action="/">
                         <input type="text" name="query" placeholder="search" />
@@ -11,11 +34,11 @@
                 <li>
                     @Html.Partial("_Social")
                 </li>
-                <li>
+                @*<li>
                     <a class="daddy-logo" href="#" target="_blank" title="Bespoke Daddy">
                         <img src="@Url.Content("~/Assets/Images/bd-logo-343x117.png")" alt="Bespoke Daddy" />
                     </a>
-                </li>
+                </li>*@
             </ul>
         </div>
     </div>

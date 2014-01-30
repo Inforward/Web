@@ -32,6 +32,7 @@ namespace Bespoke.Web
                 "~/Assets/vendor/foundation/foundation.js",
                 "~/Assets/vendor/foundation/foundation.offcanvas.js",
                 "~/Assets/vendor/foundation/foundation.reveal.js",
+                "~/Assets/vendor/foundation/foundation.dropdown.js",
                 "~/Assets/vendor/jquery.scroll-start-stop.js",
                 "~/Assets/vendor/jquery.watermark.js",
                 "~/Assets/vendor/jquery.sharrre.js",

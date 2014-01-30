@@ -19,17 +19,12 @@ namespace Bespoke.Web.Controllers
 {
     public class AccountController : BaseController
     {
-        #region Private Members
-
-        private readonly IUserService _userService;
-
-        #endregion
-
         #region Constructor
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService) 
+            : base(userService)
         {
-            _userService = userService;
+            
         }
 
         #endregion
@@ -38,6 +33,7 @@ namespace Bespoke.Web.Controllers
 
         [HttpGet]
         [Route("~/login", Name = "Login")]
+        [OutputCache(Duration = 600, VaryByParam = "*", VaryByContentEncoding = "gzip;deflate")]
         public PartialViewResult Login()
         {
             var model = new LoginRegisterModel() {LoginPersistLogin = true};
@@ -101,7 +97,7 @@ namespace Bespoke.Web.Controllers
         public ActionResult Logout()
         {
             Authentication.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("login");
+            return RedirectToRoute("Home");
         }
 
         [HttpPost]
@@ -138,6 +134,13 @@ namespace Bespoke.Web.Controllers
             return Json(new {Success = true});
         }
 
+        [HttpGet]
+        [Route("profile", Name="AccountProfile")]
+        public ActionResult AccountProfile()
+        {
+            return View("Profile");
+        }
+
         #endregion
 
         #region Mapping Methods
@@ -146,7 +149,7 @@ namespace Bespoke.Web.Controllers
         {
             return new UserViewModel()
             {
-                ImageUrl = user.ProfileImageUrl,
+                ImageUrl = user.FacebookUserId.HasValue ? string.Format("http://graph.facebook.com/{0}/picture?type=small", user.FacebookUserId) : "/Assets/Images/profile-generic-small.gif",
                 Name = user.Name
             };
         }
@@ -157,9 +160,13 @@ namespace Bespoke.Web.Controllers
 
         private void SignIn(User user, bool persistLogin)
         {
-            var identity = new ClaimsIdentity(new[] { new Claim(ClaimTypes.Name, user.Email) }, DefaultAuthenticationTypes.ApplicationCookie, ClaimTypes.Name, ClaimTypes.Role);
+            var identity = new ClaimsIdentity(
+                new[] { new Claim(ClaimTypes.NameIdentifier, user.Email), new Claim(ClaimTypes.Name, user.Name)  }, 
+                DefaultAuthenticationTypes.ApplicationCookie,
+                ClaimTypes.Name, 
+                ClaimTypes.Role);
 
-            identity.AddClaim(new Claim(ClaimTypes.Role, "guest"));
+            //identity.AddClaim(new Claim(ClaimTypes.Role, "guest"));
 
             Authentication.SignIn(new AuthenticationProperties() { IsPersistent = persistLogin }, identity);
         }

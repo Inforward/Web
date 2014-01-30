@@ -20,7 +20,8 @@ namespace Bespoke.Web.Controllers
 
         #region Controller
 
-        public BlogController(IBlogService blogService)
+        public BlogController(IUserService userService, IBlogService blogService) 
+            : base(userService)
         {
             _blogService = blogService;
         }

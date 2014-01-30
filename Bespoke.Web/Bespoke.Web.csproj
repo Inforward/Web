@@ -232,6 +232,8 @@
     <Content Include="Assets\Images\login-bg-bw.jpg" />
     <Content Include="Assets\Images\login-bg-color.jpg" />
     <Content Include="Assets\Images\logo-432x153.png" />
+    <Content Include="Assets\Images\profile-generic-large.gif" />
+    <Content Include="Assets\Images\profile-generic-small.gif" />
     <Content Include="Assets\Images\promo-banner-blog.jpg" />
     <Content Include="Assets\Images\promo-banner-discuss.jpg" />
     <Content Include="Assets\Images\sharrre-icons.png" />
@@ -518,6 +520,7 @@
     <Content Include="Views\Discussions\Index.cshtml" />
     <Content Include="Views\Shared\_Pagination.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

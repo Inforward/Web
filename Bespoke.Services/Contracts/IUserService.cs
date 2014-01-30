@@ -9,7 +9,8 @@ namespace Bespoke.Services.Contracts
 {
     public interface IUserService
     {
-        LoginResponse Login(LoginRequest request);
-        CreateUserResponse CreateUser(CreateUserRequest request);
+        GenericUserResponse Login(LoginRequest request);
+        GenericUserResponse CreateUser(CreateUserRequest request);
+        GenericUserResponse GetUserByEmail(string email);
     }
 }

@@ -367,6 +367,42 @@ a {
       height: 76px; }
     #nav-wrap .menu-button {
       display: none; } }
+.button.dropdown.profile {
+  border-right: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: transparent;
+  text-transform: none;
+  padding-left: 0;
+  padding-right: 22px; }
+  .button.dropdown.profile:hover {
+    color: #807f83; }
+  .button.dropdown.profile img {
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px; }
+  .button.dropdown.profile:before {
+    border-color: #807f83 transparent transparent transparent;
+    right: 0; }
+
+.profile-dropdown li:first-child {
+  padding: 10px;
+  border-bottom: solid 1px #cccccc; }
+  .profile-dropdown li:first-child img {
+    padding-right: 10px; }
+.profile-dropdown li a {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  color: #333333;
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 1.6rem !important; }
+  .profile-dropdown li a:hover {
+    color: #333333; }
+
 /*
    Footer Styles
 */

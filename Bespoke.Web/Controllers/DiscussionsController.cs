@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bespoke.Infrastructure.Configuration;
+using Bespoke.Services.Contracts;
 using Bespoke.Web.Helpers;
 using Bespoke.Web.Models.Discussions;
 
@@ -11,6 +12,16 @@ namespace Bespoke.Web.Controllers
 {
     public class DiscussionsController : BaseController
     {
+        #region Constructor
+
+        public DiscussionsController(IUserService userService) 
+            : base(userService)
+        {
+            
+        }
+
+        #endregion
+
         public ActionResult Index()
         {
             var model = new MootConfigModel()

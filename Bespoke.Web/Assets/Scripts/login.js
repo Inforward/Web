@@ -41,13 +41,12 @@
 
             $slider = $modal.find(".iosslider");
             
-            // Init slider when first opened
+            // Init slider when opened
             $(document).on('opened', '#login-modal', function () {
                 if ($slider.data("iosslider"))
                     $slider.iosSlider('destroy');
                 
                 initSlider();
-                $modal.find("#login-form input:text").first().focus();
             });
             
             // Initialize watermarks
@@ -62,6 +61,7 @@
             $modal.find("form").ajaxForm({
                 dataType: 'json',
                 beforeSubmit: function (arr, $form) {
+                    $form.find(".validation-summary").text("");
                     return $form.valid();
                 },
                 success: function (response, statusText, xhr, $form) {
@@ -106,16 +106,16 @@
                 onSlideChange: function (args) {
                     var $form = $(args.targetSlideObject).find("form");
                     resetForm($form);
-                },
-                onSlideComplete: function (args) {
-                    $(args.currentSlideObject).find("form input:text").first().focus();
                 }
             });
         }
         
         function facebookLogin() {
             facebookProvider.login(function (response) {
-                alert(response.Success);
+                if (response.Success) {
+                    pubsub.publish(events.login, response.User);
+                    close();
+                }
             });
         }
         
@@ -127,8 +127,8 @@
         
         function resetForm($form) {
             $form.validate().resetForm();
-            $form.find("input:text,input:password").val("");
             $form.find(".field-validation-error,.field-validation-valid,.validation-summary").text("");
+            $form.find("input:text,input:password").val("");
         }
         
         function show() {
